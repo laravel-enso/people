@@ -15,7 +15,7 @@ class CreateStructureForPeople extends StructureMigration
         ['name' => 'administration.people.options', 'description' => 'Get options for select', 'type' => 0, 'is_default' => false],
         ['name' => 'administration.people.create', 'description' => 'Create person', 'type' => 1, 'is_default' => false],
         ['name' => 'administration.people.edit', 'description' => 'Edit existing person', 'type' => 1, 'is_default' => false],
-        ['name' => 'administration.people.index', 'description' => 'Show people', 'type' => 0, 'is_default' => false],
+        ['name' => 'administration.people.index', 'description' => 'Show people index', 'type' => 0, 'is_default' => false],
         ['name' => 'administration.people.store', 'description' => 'Store newly created person', 'type' => 1, 'is_default' => false],
         ['name' => 'administration.people.update', 'description' => 'Update edited person', 'type' => 1, 'is_default' => false],
         ['name' => 'administration.people.destroy', 'description' => 'Delete person', 'type' => 1, 'is_default' => false],

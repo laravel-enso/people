@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 use LaravelEnso\TrackWho\app\Traits\CreatedBy;
 use LaravelEnso\TrackWho\app\Traits\UpdatedBy;
 use LaravelEnso\ActivityLog\app\Traits\LogsActivity;
-use LaravelEnso\AddressesManager\app\Traits\Addresses;
+use LaravelEnso\AddressesManager\app\Traits\Addressable;
 
 class Person extends Model
 {
-    use Addresses, CreatedBy, UpdatedBy, LogsActivity;
+    use Addressable, CreatedBy, UpdatedBy, LogsActivity;
 
     protected $guarded = [];
 
