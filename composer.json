@@ -1,0 +1,44 @@
+{
+    "name": "laravel-enso/people",
+    "description": "Person management dependency for Laravel Enso",
+    "keywords": [
+        "laravel-enso",
+        "people",
+        "person-management"
+    ],
+    "homepage": "https://github.com/laravel-enso/People",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Adrian Ocneanu",
+            "email": "aocneanu@gmail.com",
+            "homepage": "https://laravel-enso.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "laravel-enso/activitylog": "1.1.*",
+        "laravel-enso/core": "3.1.*",
+        "laravel-enso/formbuilder": "2.9.*",
+        "laravel-enso/helpers": "1.9.*",
+        "laravel-enso/structuremanager": "2.3.*",
+        "laravel-enso/trackwho": "1.7.*",
+        "laravel-enso/vuedatatable": "1.6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaravelEnso\\People\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelEnso\\People\\AppServiceProvider",
+                "LaravelEnso\\People\\AuthServiceProvider"
+            ],
+            "aliases": {}
+        }
+    }
+}

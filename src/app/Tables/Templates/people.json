@@ -1,0 +1,55 @@
+{
+    "routePrefix": "administration.people",
+    "readSuffix": "getTableData",
+    "crtNo": true,
+    "buttons": ["excel", "create", "edit", "destroy"],
+    "columns": [{
+        "label": "Title",
+        "name": "title",
+        "data": "people.title",
+        "meta": ["searchable", "sortable"],
+        "enum": "LaravelEnso\\People\\app\\Enums\\Titles"
+    }, {
+        "label": "Name",
+        "name": "name",
+        "data": "people.name",
+        "meta": ["searchable", "sortable"]
+    }, {
+        "label": "Appellative",
+        "name": "appellative",
+        "data": "people.appellative",
+        "meta": ["searchable", "sortable"]
+    }, {
+        "label": "Email",
+        "name": "email",
+        "data": "people.email",
+        "meta": ["searchable", "sortable"]
+    }, {
+        "label": "Phone",
+        "name": "phone",
+        "data": "people.phone",
+        "meta": ["searchable", "sortable"]
+    }, {
+        "label": "Birthday",
+        "name": "birthday",
+        "data": "people.birthday",
+        "meta": ["searchable", "sortable", "date"]
+    }, {
+        "label": "Gender",
+        "name": "gender",
+        "data": "people.gender",
+        "meta": ["sortable"],
+        "class": "is-italic",
+        "enum": "LaravelEnso\\People\\app\\Enums\\Genders"
+    }, {
+        "label": "User",
+        "name": "user",
+        "data": "users.user",
+        "meta": ["boolean", "sortable"]
+    }, {
+        "label": "Created at",
+        "name": "created_at",
+        "data": "people.created_at",
+        "meta": ["date"]
+    }]
+}
