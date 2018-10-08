@@ -11,5 +11,11 @@ trait IsPerson
                 $model->person->update(['email' => $model->email]);
             }
         });
+
+        self::creating(function ($model) {
+            if ($model->isDirty('email')) {
+                $model->person->update(['email' => $model->email]);
+            }
+        });
     }
 }

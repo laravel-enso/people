@@ -41,7 +41,7 @@
                 "content": "email"
             }
         }, {
-            "label": "Personal identifier",
+            "label": "Personal Identifier",
             "name": "uid",
             "value": null,
             "meta": {

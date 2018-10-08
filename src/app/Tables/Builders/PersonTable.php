@@ -12,9 +12,7 @@ class PersonTable extends Table
     public function query()
     {
         return Person::select(\DB::raw(
-                'people.id as "dtRowId", people.title, people.name, people.phone,
-                people.appellative, people.email, people.phone, people.birthday, people.gender,
-                if(users.id is null, 0, 1) as user, people.created_at'
+                'people.*, people.id as "dtRowId", if(users.id is null, 0, 1) as user'
             ))->leftJoin('users', 'people.id', '=', 'users.person_id');
     }
 }
