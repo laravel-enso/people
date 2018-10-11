@@ -9,6 +9,7 @@ use LaravelEnso\TrackWho\app\Traits\CreatedBy;
 use LaravelEnso\TrackWho\app\Traits\UpdatedBy;
 use LaravelEnso\ActivityLog\app\Traits\LogsActivity;
 use LaravelEnso\AddressesManager\app\Traits\Addressable;
+use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class Person extends Model
 {
