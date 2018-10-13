@@ -13,7 +13,7 @@ class PersonForm
 
     public function __construct()
     {
-        $this->form = new Form(self::TemplatePath);
+        $this->form = new Form($this->templatePath());
     }
 
     public function create()
@@ -36,5 +36,15 @@ class PersonForm
             ->append('userId', optional($person->user)->id)
             ->append('personId', $person->id)
             ->edit($person);
+    }
+
+    private function templatePath()
+    {
+        $file = config('enso.companies.formTemplate');
+        $templatePath = base_path($file);
+
+        return $file && \File::exists($templatePath)
+            ? $templatePath
+            : self::TemplatePath;
     }
 }

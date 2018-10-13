@@ -7,12 +7,22 @@ use LaravelEnso\VueDatatable\app\Classes\Table;
 
 class PersonTable extends Table
 {
-    protected $templatePath = __DIR__.'/../Templates/people.json';
+    const TemplatePath = __DIR__.'/../Templates/people.json';
 
     public function query()
     {
         return Person::select(\DB::raw(
                 'people.*, people.id as "dtRowId", if(users.id is null, 0, 1) as user'
             ))->leftJoin('users', 'people.id', '=', 'users.person_id');
+    }
+
+    public function templatePath()
+    {
+        $file = config('enso.people.tableTemplate');
+        $templatePath = base_path($file);
+
+        return $file && \File::exists($templatePath)
+            ? $templatePath
+            : self::TemplatePath;
     }
 }

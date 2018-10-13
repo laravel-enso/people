@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'validations' => [
-        // 'uid' => 'custom'
-    ],
+    'requestValidator' => null,
+    'formTemplate' => null,
+    'tableTemplate' => null,
 ];

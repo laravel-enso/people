@@ -17,8 +17,10 @@ class PersonController extends Controller
         return ['form' => $form->create()];
     }
 
-    public function store(ValidatePersonRequest $request)
+    public function store()
     {
+        $request = app()->make($this->requestValidator());
+
         $person = Person::create($request->validated());
 
         return [
@@ -33,8 +35,10 @@ class PersonController extends Controller
         return ['form' => $form->edit($person)];
     }
 
-    public function update(ValidatePersonRequest $request, Person $person)
+    public function update(Person $person)
     {
+        $request = app()->make($this->requestValidator());
+
         $person->fill($request->validated());
 
         $this->authorize('update', $person);
@@ -54,5 +58,12 @@ class PersonController extends Controller
             'message' => __('The person was successfully deleted'),
             'redirect' => 'administration.people.index',
         ];
+    }
+
+    private function requestValidator()
+    {
+        return class_exists(config('enso.people.requestValidator'))
+            ? config('enso.people.requestValidator')
+            : ValidatePersonRequest::class;
     }
 }
