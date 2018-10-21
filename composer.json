@@ -36,7 +36,7 @@
         "laravel": {
             "providers": [
                 "LaravelEnso\\People\\AppServiceProvider",
-                "LaravelEnso\\People\\AuthServiceProvider"
+                "LaravelEnso\\People\\RequestValidationProvider"
             ],
             "aliases": {}
         }

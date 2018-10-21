@@ -26,9 +26,7 @@ class PersonForm
         if ($person->hasUser()) {
             $this->form->readonly('email')
                 ->meta(
-                    'email',
-                    'tooltip',
-                    'Email can only be edited via the user form'
+                    'email', 'tooltip', 'Email can only be edited via the user form'
                 );
         }
 

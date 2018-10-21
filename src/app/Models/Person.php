@@ -5,6 +5,7 @@ namespace LaravelEnso\People\app\Models;
 use Carbon\Carbon;
 use LaravelEnso\Core\app\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use LaravelEnso\People\app\Enums\Genders;
 use LaravelEnso\TrackWho\app\Traits\CreatedBy;
 use LaravelEnso\TrackWho\app\Traits\UpdatedBy;
 use LaravelEnso\ActivityLog\app\Traits\LogsActivity;
@@ -17,9 +18,11 @@ class Person extends Model
 
     protected $guarded = [];
 
+    protected $dates = ['birthday'];
+
     protected $loggableLabel = 'name';
 
-    protected $loggable = ['name', 'appelative', 'phone']; //add gender to loggable
+    protected $loggable = ['name', 'appelative', 'phone', 'gender' => Genders::class];
 
     public function user()
     {

@@ -4,12 +4,15 @@ namespace LaravelEnso\People\app\Http\Requests;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use LaravelEnso\People\app\Contracts\ValidatesPersonRequest;
 
-class ValidatePersonRequest extends FormRequest
+class ValidatePersonRequest extends FormRequest implements ValidatesPersonRequest
 {
     public function authorize()
     {
-        return true;
+        return $this->method() !== 'PATCH'
+            || ! $this->route('person')->hasUser()
+            || $this->route('person')->email === $this->email;
     }
 
     public function rules()
@@ -18,8 +21,9 @@ class ValidatePersonRequest extends FormRequest
         $uidUnique = Rule::unique('people', 'uid');
 
         if ($this->method() === 'PATCH') {
-            $emailUnique = $emailUnique->ignore($this->route('person')->id);
-            $uidUnique = $uidUnique->ignore($this->route('person')->id);
+            $person = $this->route('person');
+            $emailUnique = $emailUnique->ignore($person->id);
+            $uidUnique = $uidUnique->ignore($person->id);
         }
 
         return [

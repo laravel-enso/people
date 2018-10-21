@@ -6,7 +6,7 @@ use Illuminate\Routing\Controller;
 use LaravelEnso\People\app\Models\Person;
 use LaravelEnso\People\app\Forms\Builders\PersonForm;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use LaravelEnso\People\app\Http\Requests\ValidatePersonRequest;
+use LaravelEnso\People\app\Contracts\ValidatesPersonRequest;
 
 class PersonController extends Controller
 {
@@ -17,11 +17,9 @@ class PersonController extends Controller
         return ['form' => $form->create()];
     }
 
-    public function store()
+    public function store(ValidatesPersonRequest $request)
     {
-        $request = app()->make($this->requestValidator());
-
-        $person = Person::create($request->validated());
+        $person = Person::create($request->all());
 
         return [
             'message' => __('The person was successfully created'),
@@ -35,35 +33,20 @@ class PersonController extends Controller
         return ['form' => $form->edit($person)];
     }
 
-    public function update(Person $person)
+    public function update(ValidatesPersonRequest $request, Person $person)
     {
-        $request = app()->make($this->requestValidator());
-
-        $person->fill($request->validated());
-
-        $this->authorize('update', $person);
-
-        $person->save();
+        $person->update($request->all());
 
         return ['message' => __('The person was successfully updated')];
     }
 
     public function destroy(Person $person)
     {
-        $this->authorize('handle', $person);
-
         $person->delete();
 
         return [
             'message' => __('The person was successfully deleted'),
             'redirect' => 'administration.people.index',
         ];
-    }
-
-    private function requestValidator()
-    {
-        return class_exists(config('enso.people.requestValidator'))
-            ? config('enso.people.requestValidator')
-            : ValidatePersonRequest::class;
     }
 }
