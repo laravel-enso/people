@@ -50,6 +50,6 @@
         "label": "Created at",
         "name": "created_at",
         "data": "people.created_at",
-        "meta": ["date"]
+        "meta": ["date", "sortable"]
     }]
 }
