@@ -1,6 +1,5 @@
 {
     "routePrefix": "administration.people",
-    "readSuffix": "getTableData",
     "crtNo": true,
     "buttons": ["excel", "create", "edit", "destroy"],
     "columns": [{

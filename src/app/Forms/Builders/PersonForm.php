@@ -32,7 +32,6 @@ class PersonForm
 
         return $this->form
             ->append('userId', optional($person->user)->id)
-            ->append('personId', $person->id)
             ->edit($person);
     }
 

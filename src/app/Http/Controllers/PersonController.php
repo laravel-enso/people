@@ -24,7 +24,7 @@ class PersonController extends Controller
         return [
             'message' => __('The person was successfully created'),
             'redirect' => 'administration.people.edit',
-            'id' => $person->id,
+            'param' => ['person' => $person->id],
         ];
     }
 

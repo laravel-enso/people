@@ -17,10 +17,8 @@ class RequestValidationProvider extends ServiceProvider
 
     public function register()
     {
-        $this->app->bind(ValidatesPersonRequest::class,
-            config('enso.people.requestValidator')
-                ? config('enso.people.requestValidator')
-                : ValidatePersonRequest::class
+        $this->app->bind(
+            ValidatesPersonRequest::class, ValidatePersonRequest::class
         );
     }
 

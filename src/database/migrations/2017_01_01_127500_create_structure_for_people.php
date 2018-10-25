@@ -4,13 +4,9 @@ use LaravelEnso\StructureManager\app\Classes\StructureMigration;
 
 class CreateStructureForPeople extends StructureMigration
 {
-    protected $permissionGroup = [
-        'name' => 'administration.people', 'description' => 'People permissions group',
-    ];
-
     protected $permissions = [
         ['name' => 'administration.people.initTable', 'description' => 'Init table for people', 'type' => 0, 'is_default' => false],
-        ['name' => 'administration.people.getTableData', 'description' => 'Get table data for people', 'type' => 0, 'is_default' => false],
+        ['name' => 'administration.people.tableData', 'description' => 'Get table data for people', 'type' => 0, 'is_default' => false],
         ['name' => 'administration.people.exportExcel', 'description' => 'Export excel for people', 'type' => 0, 'is_default' => false],
         ['name' => 'administration.people.options', 'description' => 'Get options for select', 'type' => 0, 'is_default' => false],
         ['name' => 'administration.people.create', 'description' => 'Create person', 'type' => 1, 'is_default' => false],
@@ -22,7 +18,7 @@ class CreateStructureForPeople extends StructureMigration
     ];
 
     protected $menu = [
-        'name' => 'People', 'icon' => 'user-tie', 'link' => 'administration.people.index', 'order_index' => 200, 'has_children' => false,
+        'name' => 'People', 'icon' => 'user-tie', 'route' => 'administration.people.index', 'order_index' => 200, 'has_children' => false,
     ];
 
     protected $parentMenu = 'Administration';

@@ -9,8 +9,8 @@ Route::namespace('LaravelEnso\People\app\Http\Controllers')
             ->group(function () {
                 Route::get('initTable', 'PersonTableController@init')
                     ->name('initTable');
-                Route::get('getTableData', 'PersonTableController@data')
-                    ->name('getTableData');
+                Route::get('tableData', 'PersonTableController@data')
+                    ->name('tableData');
                 Route::get('exportExcel', 'PersonTableController@excel')
                     ->name('exportExcel');
 
