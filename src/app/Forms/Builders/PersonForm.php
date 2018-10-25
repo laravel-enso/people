@@ -37,7 +37,7 @@ class PersonForm
 
     private function templatePath()
     {
-        $file = config('enso.companies.formTemplate');
+        $file = config('enso.people.formTemplate');
         $templatePath = base_path($file);
 
         return $file && \File::exists($templatePath)
