@@ -44,7 +44,7 @@
         "label": "User",
         "name": "user",
         "data": "users.user",
-        "meta": ["boolean", "sortable"]
+        "meta": ["boolean"]
     }, {
         "label": "Created at",
         "name": "created_at",
