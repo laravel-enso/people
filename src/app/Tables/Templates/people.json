@@ -43,8 +43,8 @@
     }, {
         "label": "User",
         "name": "user",
-        "data": "users.user",
-        "meta": ["boolean"]
+        "data": "users.id",
+        "meta": ["boolean", "sortable"]
     }, {
         "label": "Created at",
         "name": "created_at",
