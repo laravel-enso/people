@@ -32,7 +32,7 @@ class PersonTest extends TestCase
     /** @test */
     public function can_view_create_form()
     {
-        $this->get(route($this->permissionGroup.'.create', [$this->testModel->id], false))
+        $this->get(route($this->permissionGroup.'.create', false))
             ->assertStatus(200)
             ->assertJsonStructure(['form']);
     }
