@@ -10,5 +10,7 @@ class PersonSelectController extends Controller
 {
     use OptionsBuilder;
 
+    protected $queryAttributes = ['name', 'appellative', 'position'];
+
     protected $model = Person::class;
 }

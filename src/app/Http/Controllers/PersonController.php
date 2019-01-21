@@ -19,7 +19,11 @@ class PersonController extends Controller
 
     public function store(ValidatesPersonRequest $request)
     {
-        $person = Person::create($request->all());
+        $person = new Person($request->all());
+
+        $this->authorize('set-company', $person);
+
+        $person->save();
 
         return [
             'message' => __('The person was successfully created'),
@@ -35,7 +39,13 @@ class PersonController extends Controller
 
     public function update(ValidatesPersonRequest $request, Person $person)
     {
-        $person->update($request->all());
+        $person->fill($request->all());
+
+        if ($person->isDirty('company_id')) {
+            $this->authorize('change-company', $person);
+        }
+
+        $person->save();
 
         return ['message' => __('The person was successfully updated')];
     }

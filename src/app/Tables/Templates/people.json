@@ -34,13 +34,6 @@
         "data": "people.birthday",
         "meta": ["searchable", "sortable", "date"]
     }, {
-        "label": "Gender",
-        "name": "gender",
-        "data": "people.gender",
-        "meta": ["sortable"],
-        "class": "is-italic",
-        "enum": "LaravelEnso\\People\\app\\Enums\\Genders"
-    }, {
         "label": "User",
         "name": "user",
         "data": "users.id",

@@ -1,6 +1,8 @@
 {
     "routePrefix": "administration.people",
+    "tabs": true,
     "sections": [{
+        "tab": "Personal",
         "columns": "custom",
         "fields": [{
             "label": "Title",
@@ -31,7 +33,8 @@
             }
         }]
     }, {
-        "columns": 2,
+        "tab": "Personal",
+        "columns": 3,
         "fields": [{
             "label": "Email",
             "name": "email",
@@ -41,17 +44,6 @@
                 "content": "email"
             }
         }, {
-            "label": "Personal Identifier",
-            "name": "uid",
-            "value": null,
-            "meta": {
-                "type": "input",
-                "content": "text"
-            }
-        }]
-    },{
-        "columns": 3,
-        "fields": [{
             "label": "Phone Number",
             "name": "phone",
             "value": null,
@@ -66,24 +58,47 @@
             "meta": {
                 "type": "datepicker"
             }
-        }, {
-            "label": "Gender",
-            "name": "gender",
-            "value": null,
-            "meta": {
-                "type": "select",
-                "options": "LaravelEnso\\People\\app\\Enums\\Genders"
-            }
         }]
     }, {
-        "columns": 1,
+        "tab": "Personal",
+        "columns": "custom",
         "fields": [{
+            "column": 6,
+            "label": "Unique Identifier",
+            "name": "uid",
+            "value": null,
+            "meta": {
+                "type": "input",
+                "content": "text"
+            }
+        }, {
+            "column": 12,
             "label": "Notes",
             "name": "obs",
             "value": null,
             "meta": {
                 "type": "textarea",
                 "rows": 3
+            }
+        }]
+    }, {
+        "tab": "Company",
+        "columns": 2,
+        "fields": [{
+            "label": "Company",
+            "name": "company_id",
+            "value": null,
+            "meta": {
+                "type": "select",
+                "source": "administration.companies.options"
+            }
+        }, {
+            "label": "Position",
+            "name": "position",
+            "value": null,
+            "meta": {
+                "type": "input",
+                "content": "text"
             }
         }]
     }]

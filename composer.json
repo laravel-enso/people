@@ -20,7 +20,7 @@
     "require": {
         "php": ">=7.1.0",
         "laravel-enso/activitylog": "1.1.*",
-        "laravel-enso/core": "3.4.*",
+        "laravel-enso/core": "3.5.*",
         "laravel-enso/formbuilder": "2.12.*",
         "laravel-enso/helpers": "1.10.*",
         "laravel-enso/structuremanager": "2.5.*",
@@ -36,6 +36,7 @@
         "laravel": {
             "providers": [
                 "LaravelEnso\\People\\AppServiceProvider",
+                "LaravelEnso\\People\\AuthServiceProvider",
                 "LaravelEnso\\People\\RequestValidationProvider"
             ],
             "aliases": {}

@@ -5,7 +5,9 @@ namespace LaravelEnso\People\app\Models;
 use Carbon\Carbon;
 use LaravelEnso\Core\app\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use LaravelEnso\People\app\Enums\Titles;
 use LaravelEnso\People\app\Enums\Genders;
+use LaravelEnso\Companies\app\Models\Company;
 use LaravelEnso\TrackWho\app\Traits\CreatedBy;
 use LaravelEnso\TrackWho\app\Traits\UpdatedBy;
 use LaravelEnso\ActivityLog\app\Traits\LogsActivity;
@@ -22,7 +24,7 @@ class Person extends Model
 
     protected $loggableLabel = 'name';
 
-    protected $loggable = ['name', 'appelative', 'phone', 'gender' => Genders::class];
+    protected $loggable = ['name', 'appelative', 'phone'];
 
     public function user()
     {
@@ -34,11 +36,40 @@ class Person extends Model
         return $this->user()->count() === 1;
     }
 
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function gender()
+    {
+        return $this->title === Titles::Mr
+            ? Genders::Male
+            : Genders::Female;
+    }
+
+    public function isMandatary()
+    {
+        return $this->id === optional($this->company)->mandatary_id;
+    }
+
     public function setBirthdayAttribute($value)
     {
         $this->attributes['birthday'] = isset($value)
             ? Carbon::parse($value)
             : null;
+    }
+
+    public function dissociateCompany()
+    {
+        if ($this->isMandatary()) {
+            throw new ConflictHttpException(__(
+                'The selected contact is the company\'s mandatary and cannot be deleted'
+            ));
+        }
+
+        $this->company()->dissociate();
+        $this->save();
     }
 
     public function delete()
@@ -47,10 +78,8 @@ class Person extends Model
             parent::delete();
         } catch (\Exception $e) {
             throw new ConflictHttpException(__(
-                'The person has activity in the system and cannot be deleted'
+                'The person has assigned resources in the system and cannot be deleted'
             ));
         }
-
-        return ['message' => 'The person was successfully deleted'];
     }
 }
