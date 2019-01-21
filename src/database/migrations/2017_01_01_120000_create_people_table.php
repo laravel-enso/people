@@ -11,7 +11,6 @@ class CreatePeopleTable extends Migration
             $table->increments('id');
 
             $table->integer('company_id')->unsigned()->index()->nullable();
-            $table->foreign('company_id')->references('id')->on('companies');
 
             $table->tinyInteger('title')->nullable();
             $table->string('name');
