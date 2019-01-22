@@ -44,7 +44,7 @@ class Person extends Model
     public function gender()
     {
         if (! $this->title) {
-            return null;
+            return;
         }
 
         return $this->title === Titles::Mr
