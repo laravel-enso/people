@@ -10,9 +10,6 @@ class CreatePeopleTable extends Migration
         Schema::create('people', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('company_id')->unsigned()->index()->nullable();
-            $table->foreign('company_id')->references('id')->on('companies');
-
             $table->tinyInteger('title')->nullable();
             $table->string('name');
             $table->string('appellative')->nullable();
