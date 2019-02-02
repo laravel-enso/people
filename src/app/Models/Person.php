@@ -10,6 +10,7 @@ use LaravelEnso\People\app\Enums\Genders;
 use LaravelEnso\Companies\app\Models\Company;
 use LaravelEnso\TrackWho\app\Traits\CreatedBy;
 use LaravelEnso\TrackWho\app\Traits\UpdatedBy;
+use LaravelEnso\VueDatatable\app\Traits\TableCache;
 use LaravelEnso\ActivityLog\app\Traits\LogsActivity;
 use LaravelEnso\AddressesManager\app\Traits\Addressable;
 use LaravelEnso\Multitenancy\app\Traits\SystemConnection;
@@ -17,7 +18,7 @@ use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class Person extends Model
 {
-    use Addressable, CreatedBy, UpdatedBy, LogsActivity, SystemConnection;
+    use Addressable, CreatedBy, UpdatedBy, LogsActivity, SystemConnection, TableCache;
 
     protected $guarded = [];
 
