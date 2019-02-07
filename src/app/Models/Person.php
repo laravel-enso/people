@@ -13,12 +13,11 @@ use LaravelEnso\TrackWho\app\Traits\UpdatedBy;
 use LaravelEnso\VueDatatable\app\Traits\TableCache;
 use LaravelEnso\ActivityLog\app\Traits\LogsActivity;
 use LaravelEnso\AddressesManager\app\Traits\Addressable;
-use LaravelEnso\Multitenancy\app\Traits\MixedConnection;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class Person extends Model
 {
-    use Addressable, CreatedBy, UpdatedBy, LogsActivity, MixedConnection, TableCache;
+    use Addressable, CreatedBy, UpdatedBy, LogsActivity, TableCache;
 
     protected $guarded = [];
 
@@ -26,7 +25,7 @@ class Person extends Model
 
     protected $loggableLabel = 'name';
 
-    protected $loggable = ['name', 'appelative', 'phone'];
+    protected $loggable = ['name', 'appelative', 'phone', 'birthday'];
 
     protected $cachedTable = 'people';
 
