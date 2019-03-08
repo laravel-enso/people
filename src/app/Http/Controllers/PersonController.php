@@ -6,7 +6,7 @@ use Illuminate\Routing\Controller;
 use LaravelEnso\People\app\Models\Person;
 use LaravelEnso\People\app\Forms\Builders\PersonForm;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use LaravelEnso\People\app\Contracts\ValidatesPersonRequest;
+use LaravelEnso\People\app\Http\Requests\ValidatePersonRequest;
 
 class PersonController extends Controller
 {
@@ -17,7 +17,7 @@ class PersonController extends Controller
         return ['form' => $form->create()];
     }
 
-    public function store(ValidatesPersonRequest $request)
+    public function store(ValidatePersonRequest $request)
     {
         $person = new Person($request->all());
 
@@ -37,7 +37,7 @@ class PersonController extends Controller
         return ['form' => $form->edit($person)];
     }
 
-    public function update(ValidatesPersonRequest $request, Person $person)
+    public function update(ValidatePersonRequest $request, Person $person)
     {
         $person->fill($request->all());
 

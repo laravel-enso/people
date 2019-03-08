@@ -4,9 +4,8 @@ namespace LaravelEnso\People\app\Http\Requests;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
-use LaravelEnso\People\app\Contracts\ValidatesPersonRequest;
 
-class ValidatePersonRequest extends FormRequest implements ValidatesPersonRequest
+class ValidatePersonRequest extends FormRequest
 {
     public function authorize()
     {
