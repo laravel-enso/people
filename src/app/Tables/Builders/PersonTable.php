@@ -12,8 +12,9 @@ class PersonTable extends Table
     public function query()
     {
         return Person::select(\DB::raw(
-                'people.*, people.id as "dtRowId", CASE WHEN users.id is null THEN 0 ELSE 1 END as "user"'
-            ))->leftJoin('users', 'people.id', '=', 'users.person_id');
+            'people.*, people.id as "dtRowId", CASE WHEN users.id is null THEN 0 ELSE 1 END as "user", companies.name as company'
+        ))->leftJoin('users', 'people.id', '=', 'users.person_id')
+            ->leftJoin('companies', 'people.company_id', '=', 'companies.id');
     }
 
     public function templatePath()

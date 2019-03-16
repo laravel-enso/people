@@ -1,48 +1,96 @@
 {
     "routePrefix": "administration.people",
     "crtNo": true,
-    "buttons": ["excel", "create", "edit", "destroy"],
+    "buttons": [
+        "excel",
+        "create",
+        "edit",
+        "destroy"
+    ],
     "cache": true,
-    "columns": [{
-        "label": "Title",
-        "name": "title",
-        "data": "people.title",
-        "meta": ["searchable", "sortable"],
-        "enum": "LaravelEnso\\People\\app\\Enums\\Titles"
-    }, {
-        "label": "Name",
-        "name": "name",
-        "data": "people.name",
-        "meta": ["searchable", "sortable"]
-    }, {
-        "label": "Appellative",
-        "name": "appellative",
-        "data": "people.appellative",
-        "meta": ["searchable", "sortable"]
-    }, {
-        "label": "Email",
-        "name": "email",
-        "data": "people.email",
-        "meta": ["searchable", "sortable"]
-    }, {
-        "label": "Phone",
-        "name": "phone",
-        "data": "people.phone",
-        "meta": ["searchable", "sortable"]
-    }, {
-        "label": "Birthday",
-        "name": "birthday",
-        "data": "people.birthday",
-        "meta": ["searchable", "sortable", "date"]
-    }, {
-        "label": "User",
-        "name": "user",
-        "data": "users.id",
-        "meta": ["boolean", "sortable"]
-    }, {
-        "label": "Created at",
-        "name": "created_at",
-        "data": "people.created_at",
-        "meta": ["date", "sortable"]
-    }]
+    "columns": [
+        {
+            "label": "Title",
+            "name": "title",
+            "data": "people.title",
+            "meta": [
+                "searchable",
+                "sortable"
+            ],
+            "enum": "LaravelEnso\\People\\app\\Enums\\Titles"
+        },
+        {
+            "label": "Name",
+            "name": "name",
+            "data": "people.name",
+            "meta": [
+                "searchable",
+                "sortable"
+            ]
+        },
+        {
+            "label": "Appellative",
+            "name": "appellative",
+            "data": "people.appellative",
+            "meta": [
+                "searchable",
+                "sortable"
+            ]
+        },
+        {
+            "label": "Company",
+            "name": "company",
+            "data": "companies.company",
+            "meta": [
+                "searchable",
+                "sortable"
+            ]
+        },
+        {
+            "label": "Email",
+            "name": "email",
+            "data": "people.email",
+            "meta": [
+                "searchable",
+                "sortable"
+            ]
+        },
+        {
+            "label": "Phone",
+            "name": "phone",
+            "data": "people.phone",
+            "meta": [
+                "searchable",
+                "sortable"
+            ]
+        },
+        {
+            "label": "Birthday",
+            "name": "birthday",
+            "data": "people.birthday",
+            "meta": [
+                "searchable",
+                "sortable",
+                "date"
+            ]
+        },
+        {
+            "label": "User",
+            "name": "user",
+            "data": "users.id",
+            "meta": [
+                "boolean",
+                "sortable"
+            ]
+        },
+        {
+            "label": "Created at",
+            "name": "created_at",
+            "data": "people.created_at",
+            "meta": [
+                "date",
+                "sortable"
+            ]
+        }
+    ]
 }
