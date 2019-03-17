@@ -40,7 +40,7 @@
         {
             "label": "Company",
             "name": "company",
-            "data": "companies.company",
+            "data": "companies.name",
             "meta": [
                 "searchable",
                 "sortable"
