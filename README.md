@@ -8,11 +8,21 @@
 
 Person management dependency for [Laravel Enso](https://github.com/laravel-enso/Enso).
 
+This package works exclusively within the [Enso](https://github.com/laravel-enso/Enso) ecosystem.
+
+The front end assets that utilize this api are present in the [ui](https://github.com/enso-ui/ui) package.
+
+For live examples and demos, you may visit [laravel-enso.com](https://www.laravel-enso.com)
+
 [![Screenshot](https://laravel-enso.github.io/people/screenshots/bulma_001_thumb.png)](https://laravel-enso.github.io/people/screenshots/bulma_001.png)
+
 [![Screenshot](https://laravel-enso.github.io/people/screenshots/bulma_002_thumb.png)](https://laravel-enso.github.io/people/screenshots/bulma_002.png)
 
 <sup>click on the photo to view a large size screenshot</sup>
 
+## Installation
+
+Comes pre-installed in Enso.
 
 ## Features
 
@@ -20,22 +30,13 @@ Person management dependency for [Laravel Enso](https://github.com/laravel-enso/
 - allows the management of people and their details
 - integrates with and extends the application user
 - is built upon the premise that all the application users are people, but some people may not be application users
-- can be reused and integrated with other modules which might handle categories of people (e.g. contacts)
+- can be reused and integrated with other modules which might handle categories of people (e.g. company people)
 - a `PersonFactory` is included by default in the package
 - a policy is used to ensure that a person email update cannot be performed if the person is linked to an user
 - custom validations may be added through the package configuration
 - the people server-side select functionality is included by default
 - the included `IsPerson` trait can be used on other models that have a `person` relationship and require email synchronization
 - enums are used for person genders and titles  
-
-### Backstory
-
-In previous Enso versions, there was no common ground between application users and 
-other categories of actors which also represented people, for example contacts and (some types of) clients.
-This sometimes lead to duplicated data as well as brittle and non reusable types and relationships.
-
-In order to move towards better maintainability, the decision to move common data into persons was taken. 
-Now the people structure can be reused as needed.
 
 ### Configuration & Usage
 
