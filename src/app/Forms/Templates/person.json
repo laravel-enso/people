@@ -1,6 +1,9 @@
 {
     "routePrefix": "administration.people",
     "tabs": true,
+    "autosave": true,
+    "debounce": 500,
+    "labels": false,
     "sections": [{
         "tab": "Personal",
         "columns": "custom",

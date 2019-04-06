@@ -11,7 +11,7 @@ class ValidatePersonRequest extends FormRequest
     {
         return $this->method() !== 'PATCH'
             || ! $this->route('person')->hasUser()
-            || $this->route('person')->email === $this->email;
+            || $this->route('person')->email === $this->get('email');
     }
 
     public function rules()

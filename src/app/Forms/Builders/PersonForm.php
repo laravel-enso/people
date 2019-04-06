@@ -24,10 +24,9 @@ class PersonForm
     public function edit(Person $person)
     {
         if ($person->hasUser()) {
-            $this->form->readonly('email')
-                ->meta(
-                    'email', 'tooltip', 'Email can only be edited via the user form'
-                );
+            $this->form->meta(
+                'email', 'tooltip', 'Email can only be edited via the user form'
+            )->readonly('email');
         }
 
         return $this->form

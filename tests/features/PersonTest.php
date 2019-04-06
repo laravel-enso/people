@@ -83,8 +83,6 @@ class PersonTest extends TestCase
             'limit' => 10,
         ], false))
         ->assertStatus(200)
-        ->assertJsonFragment([
-            'name' => $this->testModel->name,
-        ]);
+        ->assertJsonFragment(['name' => $this->testModel->name]);
     }
 }

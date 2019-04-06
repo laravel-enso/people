@@ -27,8 +27,6 @@ class Person extends Model
 
     protected $loggable = ['name', 'appelative', 'phone', 'birthday'];
 
-    protected $cachedTable = 'people';
-
     public function user()
     {
         return $this->hasOne(User::class);
