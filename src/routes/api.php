@@ -18,5 +18,6 @@ Route::namespace('LaravelEnso\People\app\Http\Controllers')
                     ->name('options');
             });
 
-        Route::resource('people', 'PersonController', ['except' => ['index', 'show']]);
+        Route::resource('people', 'PersonController')
+            ->except('index', 'show');
     });
