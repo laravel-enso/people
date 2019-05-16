@@ -18,7 +18,7 @@ class PersonPolicy
 
     public function setCompany($user, Person $person)
     {
-        return is_null($user->person->company_id)
+        return $user->person->company_id === null
             || $user->person->company_id === $person->company_id;
     }
 

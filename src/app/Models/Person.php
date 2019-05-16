@@ -10,22 +10,20 @@ use LaravelEnso\People\app\Enums\Genders;
 use LaravelEnso\Companies\app\Models\Company;
 use LaravelEnso\TrackWho\app\Traits\CreatedBy;
 use LaravelEnso\TrackWho\app\Traits\UpdatedBy;
-use LaravelEnso\VueDatatable\app\Traits\TableCache;
-use LaravelEnso\ActivityLog\app\Traits\LogsActivity;
-use LaravelEnso\AddressesManager\app\Traits\Addressable;
+use LaravelEnso\Tables\app\Traits\TableCache;
+use LaravelEnso\Addresses\app\Traits\Addressable;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class Person extends Model
 {
-    use Addressable, CreatedBy, UpdatedBy, LogsActivity, TableCache;
+    use Addressable, CreatedBy, UpdatedBy, TableCache;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'title', 'name', 'appellative', 'uid', 'email', 'phone',
+        'birthday', 'position', 'obs', 'company_id',
+    ];
 
     protected $dates = ['birthday'];
-
-    protected $loggableLabel = 'name';
-
-    protected $loggable = ['name', 'appelative', 'phone', 'birthday'];
 
     public function user()
     {
@@ -83,8 +81,10 @@ class Person extends Model
             parent::delete();
         } catch (\Exception $e) {
             throw new ConflictHttpException(__(
-                'The person has assigned resources in the system and cannot be deleted'
+                'The person is assigned to resources in the system and cannot be deleted'
             ));
         }
+
+        return ['message' => __('The person was successfully deleted')];
     }
 }

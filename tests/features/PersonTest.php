@@ -1,14 +1,13 @@
 <?php
 
-use Faker\Factory;
 use Tests\TestCase;
 use LaravelEnso\Core\app\Models\User;
 use LaravelEnso\People\app\Models\Person;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use LaravelEnso\FormBuilder\app\TestTraits\EditForm;
-use LaravelEnso\FormBuilder\app\TestTraits\CreateForm;
-use LaravelEnso\FormBuilder\app\TestTraits\DestroyForm;
-use LaravelEnso\VueDatatable\app\Traits\Tests\Datatable;
+use LaravelEnso\Forms\app\TestTraits\EditForm;
+use LaravelEnso\Forms\app\TestTraits\CreateForm;
+use LaravelEnso\Forms\app\TestTraits\DestroyForm;
+use LaravelEnso\Tables\app\Traits\Tests\Datatable;
 
 class PersonTest extends TestCase
 {

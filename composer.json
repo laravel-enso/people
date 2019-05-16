@@ -19,13 +19,12 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "laravel-enso/activitylog": "2.0.*",
-        "laravel-enso/core": "4.2.*",
-        "laravel-enso/formbuilder": "3.0.*",
-        "laravel-enso/helpers": "1.10.*",
-        "laravel-enso/structuremanager": "3.0.*",
-        "laravel-enso/trackwho": "1.7.*",
-        "laravel-enso/vuedatatable": "2.0.*"
+        "laravel-enso/core": "4.3.*",
+        "laravel-enso/forms": "3.1.*",
+        "laravel-enso/helpers": "1.11.*",
+        "laravel-enso/migrator": "1.0.*",
+        "laravel-enso/track-who": "1.8.*",
+        "laravel-enso/tables": "2.1.*"
     },
     "autoload": {
         "psr-4": {
@@ -36,7 +35,8 @@
         "laravel": {
             "providers": [
                 "LaravelEnso\\People\\AppServiceProvider",
-                "LaravelEnso\\People\\AuthServiceProvider"
+                "LaravelEnso\\People\\AuthServiceProvider",
+                "LaravelEnso\\People\\SearchServiceProvider"
             ],
             "aliases": {}
         }

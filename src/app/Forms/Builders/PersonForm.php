@@ -3,7 +3,7 @@
 namespace LaravelEnso\People\app\Forms\Builders;
 
 use LaravelEnso\People\app\Models\Person;
-use LaravelEnso\FormBuilder\app\Classes\Form;
+use LaravelEnso\Forms\app\Services\Form;
 
 class PersonForm
 {
