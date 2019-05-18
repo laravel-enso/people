@@ -2,9 +2,6 @@
 
 namespace LaravelEnso\People\app\Http\Requests;
 
-use Illuminate\Validation\Rule;
-use Illuminate\Foundation\Http\FormRequest;
-
 class ValidatePersonUpdate extends ValidatePersonStore
 {
     public function authorize()

@@ -3,13 +3,12 @@
 namespace LaravelEnso\People\app\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use LaravelEnso\Tables\app\Traits\Excel;
-use LaravelEnso\Tables\app\Traits\Datatable;
+use LaravelEnso\Tables\app\Traits\Init;
 use LaravelEnso\People\app\Tables\Builders\PersonTable;
 
-class Table extends Controller
+class InitTable extends Controller
 {
-    use Datatable, Excel;
+    use Init;
 
     protected $tableClass = PersonTable::class;
 }

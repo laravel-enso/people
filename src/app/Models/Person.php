@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 use LaravelEnso\People\app\Enums\Titles;
 use LaravelEnso\People\app\Enums\Genders;
 use LaravelEnso\Companies\app\Models\Company;
+use LaravelEnso\Tables\app\Traits\TableCache;
 use LaravelEnso\TrackWho\app\Traits\CreatedBy;
 use LaravelEnso\TrackWho\app\Traits\UpdatedBy;
-use LaravelEnso\Tables\app\Traits\TableCache;
 use LaravelEnso\Addresses\app\Traits\Addressable;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
