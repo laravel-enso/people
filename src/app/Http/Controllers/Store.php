@@ -15,7 +15,15 @@ class Store extends Controller
     {
         $person->fill($request->validated());
 
-        $this->authorize('set-company', $person);
+        if ($request->filled('companies')) {
+            $this->authorize('set-companies', $person, $request->get('companies'));
+
+            $person->attachCompanies($request->get('companies'));
+        }
+
+        if ($request->filled('company')) {
+            $person->setMainCompany($request->get('company'));
+        }
 
         $person->save();
 

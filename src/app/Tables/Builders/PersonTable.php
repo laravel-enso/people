@@ -16,7 +16,10 @@ class PersonTable extends Table
                 people.*, people.id as "dtRowId", CASE WHEN users.id is null THEN 0 ELSE 1 END as "user",
                 companies.name as company
             ')->leftJoin('users', 'people.id', '=', 'users.person_id')
-            ->leftJoin('companies', 'people.company_id', '=', 'companies.id');
+            ->leftJoin('company_person', function ($join) {
+                $join->on('people.id', '=', 'company_person.person_id')
+                    ->where('company_person.is_main', true);
+            })->leftJoin('companies', 'company_person.company_id', 'companies.id');
     }
 
     public function templatePath()

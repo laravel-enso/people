@@ -15,11 +15,19 @@ class Update extends Controller
     {
         $person->fill($request->validated());
 
-        if ($person->isDirty('company_id')) {
-            $this->authorize('change-company', $person);
-        }
+        $this->authorize('handle', $person);
 
         $person->save();
+        $person->syncCompanies($request->get('companies'));
+        $mainCompany = $person->company();
+
+        if ($request->get('company') !== optional($mainCompany)->id) {
+            if ($mainCompany) {
+                $person->removeMainCompany($mainCompany->id);
+            }
+
+            $person->setMainCompany($request->get('company'));
+        }
 
         return ['message' => __('The person was successfully updated')];
     }

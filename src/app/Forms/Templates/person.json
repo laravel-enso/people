@@ -82,23 +82,26 @@
             }
         }]
     }, {
-        "tab": "Company",
+        "tab": "Companies",
         "columns": 2,
         "fields": [{
-            "label": "Company",
-            "name": "company_id",
-            "value": null,
+            "label": "Companies",
+            "name": "companies",
+            "value": [],
             "meta": {
+                "custom": true,
                 "type": "select",
+                "multiple": true,
                 "source": "administration.companies.options"
             }
         }, {
-            "label": "Position",
-            "name": "position",
+            "label": "Main Company",
+            "name": "company",
             "value": null,
             "meta": {
-                "type": "input",
-                "content": "text"
+                "custom": true,
+                "type": "select",
+                "source": "administration.companies.options"
             }
         }]
     }]

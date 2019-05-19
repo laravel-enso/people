@@ -10,7 +10,7 @@ class Options extends Controller
 {
     use OptionsBuilder;
 
-    protected $queryAttributes = ['name', 'appellative', 'position'];
+    protected $queryAttributes = ['name', 'appellative'];
 
     protected $model = Person::class;
 }

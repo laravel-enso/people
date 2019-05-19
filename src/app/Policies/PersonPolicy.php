@@ -2,6 +2,7 @@
 
 namespace LaravelEnso\People\app\Policies;
 
+use LaravelEnso\Core\app\Models\User;
 use LaravelEnso\People\app\Models\Person;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -16,14 +17,10 @@ class PersonPolicy
         }
     }
 
-    public function setCompany($user, Person $person)
+    public function setCompanies(User $user, Person $person, array $companyIds)
     {
-        return $user->person->company_id === null
-            || $user->person->company_id === $person->company_id;
-    }
-
-    public function changeCompany($user, Person $person)
-    {
-        return false;
+        return collect($companyIds)->diff(
+            $user->person->companies()->pluck('id')
+        )->isEmpty();
     }
 }

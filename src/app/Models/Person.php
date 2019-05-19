@@ -19,8 +19,7 @@ class Person extends Model
     use Addressable, CreatedBy, UpdatedBy, TableCache;
 
     protected $fillable = [
-        'title', 'name', 'appellative', 'uid', 'email', 'phone',
-        'birthday', 'position', 'obs', 'company_id',
+        'title', 'name', 'appellative', 'uid', 'email', 'phone', 'birthday', 'obs',
     ];
 
     protected $dates = ['birthday'];
@@ -37,7 +36,16 @@ class Person extends Model
 
     public function company()
     {
-        return $this->belongsTo(Company::class);
+        return $this->companies()
+            ->withPivot('position')
+            ->wherePivot('is_main', true)
+            ->first();
+    }
+
+    public function companies()
+    {
+        return $this->belongsToMany(Company::class)
+            ->withPivot('position');
     }
 
     public function gender()
@@ -51,11 +59,6 @@ class Person extends Model
             : Genders::Female;
     }
 
-    public function isMandatary()
-    {
-        return $this->id === optional($this->company)->mandatary_id;
-    }
-
     public function setBirthdayAttribute($value)
     {
         $this->attributes['birthday'] = isset($value)
@@ -63,16 +66,39 @@ class Person extends Model
             : null;
     }
 
-    public function dissociateCompany()
+    public function attachCompanies($companyIds)
     {
-        if ($this->isMandatary()) {
-            throw new ConflictHttpException(__(
-                'The selected contact is the company\'s mandatary and cannot be deleted'
-            ));
-        }
+        $this->companies()->attach($companyIds, [
+            'is_main' => false,
+            'is_mandatary' => false,
+        ]);
+    }
 
-        $this->company()->dissociate();
-        $this->save();
+    public function syncCompanies($companyIds)
+    {
+        $existing = $this->companies()->pluck('id');
+
+        tap($this)->attachCompanies(
+                collect($companyIds)->diff($existing)
+            )->companies()->detach(
+                $existing->diff($companyIds)
+            );
+    }
+
+    public function setMainCompany(int $companyId)
+    {
+        $this->companies()
+            ->updateExistingPivot($companyId, [
+                'is_main' => true,
+            ]);
+    }
+
+    public function removeMainCompany(int $companyId)
+    {
+        $this->companies()
+            ->updateExistingPivot($companyId, [
+                'is_main' => false,
+            ]);
     }
 
     public function delete()

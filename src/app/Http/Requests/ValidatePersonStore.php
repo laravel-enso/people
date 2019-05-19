@@ -24,8 +24,23 @@ class ValidatePersonStore extends FormRequest
             'birthday' => 'date|nullable',
             'position' => 'integer|nullable',
             'obs' => 'string|nullable',
-            'company_id' => 'required_with:position',
+            'companies' => 'array',
+            'company' => 'nullable|exists:companies,id',
         ];
+    }
+
+    public function withValidator($validator)
+    {
+        if ($this->filled('company')) {
+            $validator->after(function ($validator) {
+                if (! collect($this->get('companies'))->contains($this->get('company'))) {
+                    $validator->errors()->add(
+                        'company',
+                        'You cannot set as main company one that is not associated to this person'
+                    );
+                }
+            });
+        }
     }
 
     protected function uidUnique()
