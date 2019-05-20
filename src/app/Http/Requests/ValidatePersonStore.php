@@ -9,7 +9,11 @@ class ValidatePersonStore extends FormRequest
 {
     public function authorize()
     {
-        return true;
+        return $this->filled('companies')
+            ? auth()->user()->belongsToAdminGroup()
+                || $this->authorizesCompanies()
+                    && $this->authorizesMainCompany()
+            : true;
     }
 
     public function rules()
@@ -29,20 +33,6 @@ class ValidatePersonStore extends FormRequest
         ];
     }
 
-    public function withValidator($validator)
-    {
-        if ($this->filled('company')) {
-            $validator->after(function ($validator) {
-                if (! collect($this->get('companies'))->contains($this->get('company'))) {
-                    $validator->errors()->add(
-                        'company',
-                        'You cannot set as main company one that is not associated to this person'
-                    );
-                }
-            });
-        }
-    }
-
     protected function uidUnique()
     {
         return Rule::unique('people', 'uid');
@@ -51,5 +41,20 @@ class ValidatePersonStore extends FormRequest
     protected function emailUnique()
     {
         return Rule::unique('people', 'email');
+    }
+
+    private function authorizesCompanies()
+    {
+        return collect($this->get('companies'))->diff(
+            auth()->user()->person->companies()->pluck('id')
+        )->isEmpty();
+    }
+
+    private function authorizesMainCompany()
+    {
+        return $this->filled('company')
+            ? collect($this->get('companies'))
+                ->contains($this->get('company'))
+            : true;
     }
 }

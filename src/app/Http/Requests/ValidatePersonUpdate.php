@@ -6,8 +6,8 @@ class ValidatePersonUpdate extends ValidatePersonStore
 {
     public function authorize()
     {
-        return ! $this->route('person')->hasUser()
-            || $this->route('person')->email === $this->get('email');
+        return parent::authorize()
+            && $this->noUserOrEmailUnchanged();
     }
 
     protected function uidUnique()
@@ -18,5 +18,11 @@ class ValidatePersonUpdate extends ValidatePersonStore
     protected function emailUnique()
     {
         return parent::emailUnique()->ignore($this->route('person')->id);
+    }
+
+    private function noUserOrEmailUnchanged()
+    {
+        return ! $this->route('person')->hasUser()
+            || $this->route('person')->email === $this->get('email');
     }
 }

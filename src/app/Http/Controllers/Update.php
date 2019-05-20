@@ -13,12 +13,9 @@ class Update extends Controller
 
     public function __invoke(ValidatePersonUpdate $request, Person $person)
     {
-        $person->fill($request->validated());
+        tap($person)->update($request->validated())
+            ->syncCompanies($request->get('companies'));
 
-        $this->authorize('handle', $person);
-
-        $person->save();
-        $person->syncCompanies($request->get('companies'));
         $mainCompany = $person->company();
 
         if ($request->get('company') !== optional($mainCompany)->id) {
@@ -26,7 +23,9 @@ class Update extends Controller
                 $person->removeMainCompany($mainCompany->id);
             }
 
-            $person->setMainCompany($request->get('company'));
+            if ($request->filled('company')) {
+                $person->setMainCompany($request->get('company'));
+            }
         }
 
         return ['message' => __('The person was successfully updated')];
