@@ -37,7 +37,6 @@ class Person extends Model
     public function company()
     {
         return $this->companies()
-            ->withPivot('position')
             ->wherePivot('is_main', true)
             ->first();
     }
