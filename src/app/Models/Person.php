@@ -37,6 +37,7 @@ class Person extends Model
     public function company()
     {
         return $this->companies()
+            ->withPivot('position')
             ->wherePivot('is_main', true)
             ->first();
     }
@@ -44,7 +45,7 @@ class Person extends Model
     public function companies()
     {
         return $this->belongsToMany(Company::class)
-            ->withPivot('position');
+            ->withPivot(['position', 'is_main']);
     }
 
     public function gender()
