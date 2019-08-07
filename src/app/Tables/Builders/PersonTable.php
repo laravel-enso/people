@@ -8,7 +8,7 @@ use LaravelEnso\Tables\app\Services\Table;
 
 class PersonTable extends Table
 {
-    const TemplatePath = __DIR__.'/../Templates/people.json';
+    protected const TemplatePath = __DIR__.'/../Templates/people.json';
 
     public function query()
     {
