@@ -42,6 +42,6 @@ class PersonForm
 
         return $file && \File::exists($templatePath)
             ? $templatePath
-            : self::TemplatePath;
+            : static::TemplatePath;
     }
 }

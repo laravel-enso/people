@@ -30,6 +30,6 @@ class PersonTable extends Table
 
         return $file && File::exists($templatePath)
             ? $templatePath
-            : self::TemplatePath;
+            : static::TemplatePath;
     }
 }
