@@ -24,6 +24,7 @@
         "laravel-enso/helpers": "1.11.*",
         "laravel-enso/migrator": "1.0.*",
         "laravel-enso/track-who": "1.8.*",
+        "laravel-enso/enums": "1.0.*",
         "laravel-enso/tables": "2.1.*"
     },
     "autoload": {
@@ -35,7 +36,8 @@
         "laravel": {
             "providers": [
                 "LaravelEnso\\People\\AppServiceProvider",
-                "LaravelEnso\\People\\SearchServiceProvider"
+                "LaravelEnso\\People\\SearchServiceProvider",
+                "LaravelEnso\\People\\EnumServiceProvider"
             ],
             "aliases": {}
         }
