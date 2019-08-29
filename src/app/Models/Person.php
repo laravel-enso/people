@@ -20,7 +20,8 @@ class Person extends Model
     use Addressable, CreatedBy, UpdatedBy, Rememberable, TableCache;
 
     protected $fillable = [
-        'title', 'name', 'appellative', 'uid', 'email', 'phone', 'birthday', 'bank', 'bank_account', 'obs',
+        'title', 'name', 'appellative', 'uid', 'email', 'phone', 'birthday',
+        'bank', 'bank_account', 'obs',
     ];
 
     protected $dates = ['birthday'];
@@ -32,7 +33,7 @@ class Person extends Model
 
     public function hasUser()
     {
-        return $this->user()->count() === 1;
+        return $this->user()->exists();
     }
 
     public function company()
