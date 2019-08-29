@@ -20,7 +20,7 @@ class Person extends Model
     use Addressable, CreatedBy, UpdatedBy, Rememberable, TableCache;
 
     protected $fillable = [
-        'title', 'name', 'appellative', 'uid', 'email', 'phone', 'birthday', 'obs',
+        'title', 'name', 'appellative', 'uid', 'email', 'phone', 'birthday', 'bank', 'bank_account', 'obs',
     ];
 
     protected $dates = ['birthday'];

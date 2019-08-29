@@ -26,6 +26,8 @@ class ValidatePersonStore extends FormRequest
             'email' => ['email', 'nullable', $this->emailUnique()],
             'phone' => 'max:30|nullable',
             'birthday' => 'date|nullable',
+            'bank' => 'string|nullable',
+            'bank_account' => 'string|nullable',
             'position' => 'integer|nullable',
             'obs' => 'string|nullable',
             'companies' => 'array',

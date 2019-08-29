@@ -18,5 +18,7 @@ $factory->define(Person::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'phone' => $faker->phoneNumber,
         'birthday' => now()->subYears(rand(15, 40)),
+        'bank' => $faker->word,
+        'bank_account' => $faker->bankAccountNumber,
     ];
 });
