@@ -19,6 +19,9 @@ class CreatePeopleTable extends Migration
             $table->string('phone')->nullable();
             $table->date('birthday')->nullable();
 
+            $table->string('bank')->nullable();
+            $table->string('bank_account')->nullable();
+
             $table->text('obs')->nullable();
 
             $table->integer('created_by')->unsigned()->index()->nullable();
