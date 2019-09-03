@@ -12,12 +12,13 @@ use LaravelEnso\Tables\app\Traits\TableCache;
 use LaravelEnso\TrackWho\app\Traits\CreatedBy;
 use LaravelEnso\TrackWho\app\Traits\UpdatedBy;
 use LaravelEnso\Addresses\app\Traits\Addressable;
+use LaravelEnso\DynamicMethods\app\Traits\Relations;
 use LaravelEnso\Rememberable\app\Traits\Rememberable;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class Person extends Model
 {
-    use Addressable, CreatedBy, UpdatedBy, Rememberable, TableCache;
+    use Addressable, CreatedBy, UpdatedBy, Relations, Rememberable, TableCache;
 
     protected $fillable = [
         'title', 'name', 'appellative', 'uid', 'email', 'phone', 'birthday',
