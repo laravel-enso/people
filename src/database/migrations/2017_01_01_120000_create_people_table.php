@@ -11,8 +11,8 @@ class CreatePeopleTable extends Migration
             $table->increments('id');
 
             $table->tinyInteger('title')->nullable();
-            $table->string('name');
-            $table->string('appellative')->nullable();
+            $table->string('name')->index();
+            $table->string('appellative')->index()->nullable();
 
             $table->string('uid')->nullable()->unique();
             $table->string('email')->unique()->nullable();

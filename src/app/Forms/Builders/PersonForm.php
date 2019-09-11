@@ -2,6 +2,7 @@
 
 namespace LaravelEnso\People\app\Forms\Builders;
 
+use Illuminate\Support\Facades\File;
 use LaravelEnso\Forms\app\Services\Form;
 use LaravelEnso\People\app\Models\Person;
 
@@ -9,11 +10,11 @@ class PersonForm
 {
     protected const TemplatePath = __DIR__.'/../Templates/person.json';
 
-    private $form;
+    protected $form;
 
     public function __construct()
     {
-        $this->form = new Form($this->templatePath());
+        $this->form = new Form(static::TemplatePath);
     }
 
     public function create()
@@ -33,15 +34,5 @@ class PersonForm
             ->value('company', optional($person->company())->id)
             ->append('userId', optional($person->user)->id)
             ->edit($person);
-    }
-
-    private function templatePath()
-    {
-        $file = config('enso.people.formTemplate');
-        $templatePath = base_path($file);
-
-        return $file && \File::exists($templatePath)
-            ? $templatePath
-            : static::TemplatePath;
     }
 }

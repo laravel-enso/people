@@ -32,6 +32,12 @@ class Person extends Model
         return $this->hasOne(User::class);
     }
 
+    public function companies()
+    {
+        return $this->belongsToMany(Company::class)
+            ->withPivot(['position', 'is_main']);
+    }
+
     public function hasUser()
     {
         return $this->user()->exists();
@@ -39,16 +45,9 @@ class Person extends Model
 
     public function company()
     {
-        return $this->companies()
-            ->withPivot('position')
-            ->wherePivot('is_main', true)
-            ->first();
-    }
-
-    public function companies()
-    {
-        return $this->belongsToMany(Company::class)
-            ->withPivot(['position', 'is_main']);
+        return $this->companies->first(function ($company) {
+            return $company->pivot->is_main;
+        });
     }
 
     public function gender()
@@ -62,6 +61,13 @@ class Person extends Model
             : Genders::Female;
     }
 
+    public function position(Company $company)
+    {
+        return $this->companies()
+            ->wherePivot('company_id', $company->id)
+            ->first()->pivot->position;
+    }
+
     public function setBirthdayAttribute($value)
     {
         $this->attributes['birthday'] = isset($value)
@@ -69,39 +75,17 @@ class Person extends Model
             : null;
     }
 
-    public function attachCompanies($companyIds)
+    public function syncCompanies($companyIds, $mainCompanyId)
     {
-        $this->companies()->attach($companyIds, [
-            'is_main' => false,
-            'is_mandatary' => false,
-        ]);
-    }
+        $pivotIds = collect($companyIds)
+            ->reduce(function ($pivot, $value) use ($mainCompanyId) {
+                return $pivot->put($value, [
+                    'is_main' => $value === $mainCompanyId,
+                    'is_mandatary' => false,
+                ]);
+            }, collect())->toArray();
 
-    public function syncCompanies($companyIds)
-    {
-        $existing = $this->companies()->pluck('id');
-
-        tap($this)->attachCompanies(
-                collect($companyIds)->diff($existing)
-            )->companies()->detach(
-                $existing->diff($companyIds)
-            );
-    }
-
-    public function setMainCompany(int $companyId)
-    {
-        $this->companies()
-            ->updateExistingPivot($companyId, [
-                'is_main' => true,
-            ]);
-    }
-
-    public function removeMainCompany(int $companyId)
-    {
-        $this->companies()
-            ->updateExistingPivot($companyId, [
-                'is_main' => false,
-            ]);
+        $this->companies()->sync($pivotIds);
     }
 
     public function delete()

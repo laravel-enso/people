@@ -13,16 +13,11 @@ class Store extends Controller
 
     public function __invoke(ValidatePersonStore $request, Person $person)
     {
-        tap($person)->fill($request->validated())
-            ->save();
+        $person->fill($request->validated())->save();
 
-        if ($request->filled('companies')) {
-            $person->attachCompanies($request->get('companies'));
-        }
-
-        if ($request->filled('company')) {
-            $person->setMainCompany($request->get('company'));
-        }
+        $person->syncCompanies(
+            $request->get('companies'), $request->get('company')
+        );
 
         return [
             'message' => __('The person was successfully created'),

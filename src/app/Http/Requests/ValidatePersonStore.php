@@ -3,6 +3,7 @@
 namespace LaravelEnso\People\app\Http\Requests;
 
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ValidatePersonStore extends FormRequest
@@ -10,7 +11,7 @@ class ValidatePersonStore extends FormRequest
     public function authorize()
     {
         return $this->filled('companies')
-            ? auth()->user()->belongsToAdminGroup()
+            ? Auth::user()->belongsToAdminGroup()
                 || $this->authorizesCompanies()
                     && $this->authorizesMainCompany()
             : true;
@@ -48,7 +49,7 @@ class ValidatePersonStore extends FormRequest
     private function authorizesCompanies()
     {
         return collect($this->get('companies'))->diff(
-            auth()->user()->person->companies()->pluck('id')
+            Auth::user()->person->companies()->pluck('id')
         )->isEmpty();
     }
 
