@@ -15,7 +15,6 @@ use LaravelEnso\Addresses\app\Traits\Addressable;
 use LaravelEnso\DynamicMethods\app\Traits\Relations;
 use LaravelEnso\Rememberable\app\Traits\Rememberable;
 use LaravelEnso\Helpers\app\Traits\AvoidsDeletionConflicts;
-use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class Person extends Model
 {
