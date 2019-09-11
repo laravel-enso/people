@@ -14,11 +14,13 @@ use LaravelEnso\TrackWho\app\Traits\UpdatedBy;
 use LaravelEnso\Addresses\app\Traits\Addressable;
 use LaravelEnso\DynamicMethods\app\Traits\Relations;
 use LaravelEnso\Rememberable\app\Traits\Rememberable;
+use LaravelEnso\Helpers\app\Traits\AvoidsDeletionConflicts;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class Person extends Model
 {
-    use Addressable, CreatedBy, UpdatedBy, Relations, Rememberable, TableCache;
+    use Addressable, AvoidsDeletionConflicts, CreatedBy, Relations,
+        Rememberable, TableCache, UpdatedBy;
 
     protected $fillable = [
         'title', 'name', 'appellative', 'uid', 'email', 'phone', 'birthday',
@@ -86,18 +88,5 @@ class Person extends Model
             }, collect())->toArray();
 
         $this->companies()->sync($pivotIds);
-    }
-
-    public function delete()
-    {
-        try {
-            parent::delete();
-        } catch (\Exception $e) {
-            throw new ConflictHttpException(__(
-                'The person is assigned to resources in the system and cannot be deleted'
-            ));
-        }
-
-        return ['message' => __('The person was successfully deleted')];
     }
 }
