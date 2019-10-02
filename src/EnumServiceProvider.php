@@ -8,7 +8,7 @@ use LaravelEnso\Enums\EnumServiceProvider as ServiceProvider;
 
 class EnumServiceProvider extends ServiceProvider
 {
-    protected $register = [
+    public $register = [
         'genders' => Genders::class,
         'titles' => Titles::class,
     ];
