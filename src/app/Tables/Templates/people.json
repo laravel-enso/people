@@ -2,7 +2,6 @@
     "routePrefix": "administration.people",
     "crtNo": true,
     "buttons": ["excel", "create", "edit", "destroy"],
-    "cache": true,
     "columns": [{
         "label": "Title",
         "name": "title",

@@ -2,14 +2,15 @@
 
 namespace LaravelEnso\People\app\Tables\Builders;
 
+use Illuminate\Database\Eloquent\Builder;
 use LaravelEnso\People\app\Models\Person;
-use LaravelEnso\Tables\app\Services\Table;
+use LaravelEnso\Tables\app\Contracts\Table;
 
-class PersonTable extends Table
+class PersonTable implements Table
 {
-    protected $templatePath = __DIR__.'/../Templates/people.json';
+    protected const TemplatePath = __DIR__.'/../Templates/people.json';
 
-    public function query()
+    public function query(): Builder
     {
         return Person::selectRaw('
             people.id, people.title, people.name, people.appellative, people.email, people.phone,
@@ -20,5 +21,10 @@ class PersonTable extends Table
             $join->on('people.id', '=', 'company_person.person_id')
                 ->where('company_person.is_main', true);
         })->leftJoin('companies', 'company_person.company_id', 'companies.id');
+    }
+
+    public function templatePath(): string
+    {
+        return static::TemplatePath;
     }
 }

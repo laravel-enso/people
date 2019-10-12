@@ -6,15 +6,12 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ValidatePersonStore extends FormRequest
+class ValidatePersonRequest extends FormRequest
 {
     public function authorize()
     {
-        return $this->filled('companies')
-            ? Auth::user()->belongsToAdminGroup()
-                || $this->authorizesCompanies()
-                    && $this->authorizesMainCompany()
-            : true;
+        return $this->emailUnchagedIfForUser() &&
+            (! $this->filled('companies') || $this->allowedCompanies());
     }
 
     public function rules()
@@ -38,12 +35,14 @@ class ValidatePersonStore extends FormRequest
 
     protected function uidUnique()
     {
-        return Rule::unique('people', 'uid');
+        return Rule::unique('people', 'uid')
+            ->ignore(optional($this->route('person'))->id);
     }
 
     protected function emailUnique()
     {
-        return Rule::unique('people', 'email');
+        return Rule::unique('people', 'email')
+            ->ignore(optional($this->route('person'))->id);
     }
 
     private function authorizesCompanies()
@@ -59,5 +58,18 @@ class ValidatePersonStore extends FormRequest
             ? collect($this->get('companies'))
                 ->contains($this->get('company'))
             : true;
+    }
+
+    private function emailUnchagedIfForUser()
+    {
+        return ! optional($this->route('person'))->hasUser()
+            || $this->get('email') === $this->route('person')->email;
+    }
+
+    private function allowedCompanies()
+    {
+        return Auth::user()->belongsToAdminGroup()
+            || $this->authorizesCompanies()
+                && $this->authorizesMainCompany();
     }
 }
