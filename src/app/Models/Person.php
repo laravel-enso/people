@@ -12,14 +12,15 @@ use LaravelEnso\Tables\app\Traits\TableCache;
 use LaravelEnso\TrackWho\app\Traits\CreatedBy;
 use LaravelEnso\TrackWho\app\Traits\UpdatedBy;
 use LaravelEnso\Addresses\app\Traits\Addressable;
+use LaravelEnso\Helpers\app\Traits\DateAttributes;
 use LaravelEnso\DynamicMethods\app\Traits\Relations;
 use LaravelEnso\Rememberable\app\Traits\Rememberable;
 use LaravelEnso\Helpers\app\Traits\AvoidsDeletionConflicts;
 
 class Person extends Model
 {
-    use Addressable, AvoidsDeletionConflicts, CreatedBy, Relations,
-        Rememberable, TableCache, UpdatedBy;
+    use Addressable, AvoidsDeletionConflicts, CreatedBy, DateAttributes,
+        Relations, Rememberable, TableCache, UpdatedBy;
 
     protected $fillable = [
         'title', 'name', 'appellative', 'uid', 'email', 'phone', 'birthday',
@@ -71,9 +72,7 @@ class Person extends Model
 
     public function setBirthdayAttribute($value)
     {
-        $this->attributes['birthday'] = isset($value)
-            ? Carbon::parse($value)
-            : null;
+        $this->fillDateAttribute('birthday', $value);
     }
 
     public function syncCompanies($companyIds, $mainCompanyId)

@@ -23,7 +23,7 @@ class ValidatePersonRequest extends FormRequest
             'uid' => ['string', 'nullable', $this->uidUnique()],
             'email' => ['email', 'nullable', $this->emailUnique()],
             'phone' => 'max:30|nullable',
-            'birthday' => 'date|nullable',
+            'birthday' => 'nullable',
             'bank' => 'string|nullable',
             'bank_account' => 'string|nullable',
             'position' => 'integer|nullable',
