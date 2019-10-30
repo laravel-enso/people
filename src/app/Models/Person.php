@@ -2,7 +2,6 @@
 
 namespace LaravelEnso\People\app\Models;
 
-use Carbon\Carbon;
 use LaravelEnso\Core\app\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use LaravelEnso\People\app\Enums\Titles;
