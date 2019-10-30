@@ -20,25 +20,7 @@ For live examples and demos, you may visit [laravel-enso.com](https://www.larave
 
 <sup>click on the photo to view a large size screenshot</sup>
 
-## Installation
-
-Comes pre-installed in Enso.
-
-## Features
-
-- separates the people centric operations from the core application user model
-- allows the management of people and their details
-- integrates with and extends the application user
-- is built upon the premise that all the application users are people, but some people may not be application users
-- can be reused and integrated with other modules which might handle categories of people (e.g. company people)
-- a `PersonFactory` is included by default in the package
-- a policy is used to ensure that a person email update cannot be performed if the person is linked to an user
-- custom validations may be added through the package configuration
-- the people server-side select functionality is included by default
-- the included `IsPerson` trait can be used on other models that have a `person` relationship and require email synchronization
-- enums are used for person genders and titles  
-
-### Configuration & Usage
+### Installation, Configuration & Usage
 
 Be sure to check out the full documentation for this package available at [docs.laravel-enso.com](https://docs.laravel-enso.com/backend/people.html)
 
