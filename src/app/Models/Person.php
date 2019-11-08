@@ -2,7 +2,6 @@
 
 namespace LaravelEnso\People\app\Models;
 
-use Carbon\Carbon;
 use LaravelEnso\Core\app\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use LaravelEnso\People\app\Enums\Titles;
@@ -12,15 +11,14 @@ use LaravelEnso\Tables\app\Traits\TableCache;
 use LaravelEnso\TrackWho\app\Traits\CreatedBy;
 use LaravelEnso\TrackWho\app\Traits\UpdatedBy;
 use LaravelEnso\Addresses\app\Traits\Addressable;
-use LaravelEnso\Helpers\app\Traits\DateAttributes;
 use LaravelEnso\DynamicMethods\app\Traits\Relations;
 use LaravelEnso\Rememberable\app\Traits\Rememberable;
 use LaravelEnso\Helpers\app\Traits\AvoidsDeletionConflicts;
 
 class Person extends Model
 {
-    use Addressable, AvoidsDeletionConflicts, CreatedBy, DateAttributes,
-        Relations, Rememberable, TableCache, UpdatedBy;
+    use Addressable, AvoidsDeletionConflicts, CreatedBy, Relations,
+        Rememberable, TableCache, UpdatedBy;
 
     protected $fillable = [
         'title', 'name', 'appellative', 'uid', 'email', 'phone', 'birthday',
@@ -68,11 +66,6 @@ class Person extends Model
         return $this->companies()
             ->wherePivot('company_id', $company->id)
             ->first()->pivot->position;
-    }
-
-    public function setBirthdayAttribute($value)
-    {
-        $this->fillDateAttribute('birthday', $value);
     }
 
     public function syncCompanies($companyIds, $mainCompanyId)
