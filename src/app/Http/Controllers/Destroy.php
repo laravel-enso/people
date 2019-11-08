@@ -2,9 +2,9 @@
 
 namespace LaravelEnso\People\app\Http\Controllers;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 use LaravelEnso\People\app\Models\Person;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Destroy extends Controller
 {

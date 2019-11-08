@@ -2,18 +2,18 @@
 
 namespace LaravelEnso\People\app\Models;
 
-use LaravelEnso\Core\app\Models\User;
 use Illuminate\Database\Eloquent\Model;
-use LaravelEnso\People\app\Enums\Titles;
-use LaravelEnso\People\app\Enums\Genders;
+use LaravelEnso\Addresses\app\Traits\Addressable;
 use LaravelEnso\Companies\app\Models\Company;
+use LaravelEnso\Core\app\Models\User;
+use LaravelEnso\DynamicMethods\app\Traits\Relations;
+use LaravelEnso\Helpers\app\Traits\AvoidsDeletionConflicts;
+use LaravelEnso\People\app\Enums\Genders;
+use LaravelEnso\People\app\Enums\Titles;
+use LaravelEnso\Rememberable\app\Traits\Rememberable;
 use LaravelEnso\Tables\app\Traits\TableCache;
 use LaravelEnso\TrackWho\app\Traits\CreatedBy;
 use LaravelEnso\TrackWho\app\Traits\UpdatedBy;
-use LaravelEnso\Addresses\app\Traits\Addressable;
-use LaravelEnso\DynamicMethods\app\Traits\Relations;
-use LaravelEnso\Rememberable\app\Traits\Rememberable;
-use LaravelEnso\Helpers\app\Traits\AvoidsDeletionConflicts;
 
 class Person extends Model
 {
