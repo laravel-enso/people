@@ -6,7 +6,7 @@ use LaravelEnso\Enums\app\Services\Enum;
 
 class Titles extends Enum
 {
-    const Miss = 1;
-    const Ms = 2;
-    const Mr = 3;
+    public const Miss = 1;
+    public const Ms = 2;
+    public const Mr = 3;
 }
