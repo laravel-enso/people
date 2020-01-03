@@ -1,11 +1,11 @@
 <?php
 
-namespace LaravelEnso\People\app\Http\Controllers;
+namespace LaravelEnso\People\App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
-use LaravelEnso\People\app\Forms\Builders\PersonForm;
-use LaravelEnso\People\app\Models\Person;
+use LaravelEnso\People\App\Forms\Builders\PersonForm;
+use LaravelEnso\People\App\Models\Person;
 
 class Edit extends Controller
 {

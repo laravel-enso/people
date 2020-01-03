@@ -1,10 +1,10 @@
 <?php
 
-namespace LaravelEnso\People\app\Http\Controllers;
+namespace LaravelEnso\People\App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use LaravelEnso\People\app\Tables\Builders\PersonTable;
-use LaravelEnso\Tables\app\Traits\Data;
+use LaravelEnso\People\App\Tables\Builders\PersonTable;
+use LaravelEnso\Tables\App\Traits\Data;
 
 class TableData extends Controller
 {

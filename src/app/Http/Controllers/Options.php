@@ -1,10 +1,10 @@
 <?php
 
-namespace LaravelEnso\People\app\Http\Controllers;
+namespace LaravelEnso\People\App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use LaravelEnso\People\app\Models\Person;
-use LaravelEnso\Select\app\Traits\OptionsBuilder;
+use LaravelEnso\People\App\Models\Person;
+use LaravelEnso\Select\App\Traits\OptionsBuilder;
 
 class Options extends Controller
 {

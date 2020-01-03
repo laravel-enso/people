@@ -1,19 +1,20 @@
 <?php
 
-namespace LaravelEnso\People\app\Models;
+namespace LaravelEnso\People\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use LaravelEnso\Addresses\app\Traits\Addressable;
-use LaravelEnso\Companies\app\Models\Company;
-use LaravelEnso\Core\app\Models\User;
-use LaravelEnso\DynamicMethods\app\Traits\Relations;
-use LaravelEnso\Helpers\app\Traits\AvoidsDeletionConflicts;
-use LaravelEnso\People\app\Enums\Genders;
-use LaravelEnso\People\app\Enums\Titles;
-use LaravelEnso\Rememberable\app\Traits\Rememberable;
-use LaravelEnso\Tables\app\Traits\TableCache;
-use LaravelEnso\TrackWho\app\Traits\CreatedBy;
-use LaravelEnso\TrackWho\app\Traits\UpdatedBy;
+use Illuminate\Support\Collection;
+use LaravelEnso\Addresses\App\Traits\Addressable;
+use LaravelEnso\Companies\App\Models\Company;
+use LaravelEnso\Core\App\Models\User;
+use LaravelEnso\DynamicMethods\App\Traits\Relations;
+use LaravelEnso\Helpers\App\Traits\AvoidsDeletionConflicts;
+use LaravelEnso\People\App\Enums\Genders;
+use LaravelEnso\People\App\Enums\Titles;
+use LaravelEnso\Rememberable\App\Traits\Rememberable;
+use LaravelEnso\Tables\App\Traits\TableCache;
+use LaravelEnso\TrackWho\App\Traits\CreatedBy;
+use LaravelEnso\TrackWho\App\Traits\UpdatedBy;
 
 class Person extends Model
 {
@@ -46,7 +47,12 @@ class Person extends Model
     public function company()
     {
         return $this->companies
-            ->first(fn($company) => $company->pivot->is_main);
+            ->first(fn ($company) => $company->pivot->is_main);
+    }
+
+    public function appellative()
+    {
+        return $this->person->appellative ?? $this->person->name;
     }
 
     public function gender()
@@ -69,12 +75,12 @@ class Person extends Model
 
     public function syncCompanies($companyIds, $mainCompanyId)
     {
-        $pivotIds = collect($companyIds)
-            ->reduce(fn($pivot, $value) => $pivot->put($value, [
+        $pivotIds = (new Collection($companyIds))
+            ->reduce(fn ($pivot, $value) => $pivot->put($value, [
                 'is_main' => $value === $mainCompanyId,
                 'is_mandatary' => false,
-            ]), collect())->toArray();
+            ]), new Collection());
 
-        $this->companies()->sync($pivotIds);
+        $this->companies()->sync($pivotIds->toArray());
     }
 }

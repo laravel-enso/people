@@ -1,15 +1,15 @@
 <?php
 
-namespace LaravelEnso\People\app\Enums;
+namespace LaravelEnso\People\App\Enums;
 
-use LaravelEnso\Enums\app\Services\Enum;
+use LaravelEnso\Enums\App\Services\Enum;
 
 class Genders extends Enum
 {
     public const Female = 1;
     public const Male = 2;
 
-    protected static $data = [
+    protected static array $data = [
         self::Female => 'female',
         self::Male => 'male',
     ];

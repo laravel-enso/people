@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelEnso\People\app\Enums;
+namespace LaravelEnso\People\App\Enums;
 
-use LaravelEnso\Enums\app\Services\Enum;
+use LaravelEnso\Enums\App\Services\Enum;
 
 class Titles extends Enum
 {

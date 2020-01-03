@@ -1,21 +1,20 @@
 <?php
 
-namespace LaravelEnso\People\app\Traits;
+namespace LaravelEnso\People\App\Traits;
 
 trait IsPerson
 {
-    protected static function bootIsPerson()
+    public static function bootIsPerson()
     {
-        self::updating(function ($model) {
-            if ($model->isDirty('email')) {
-                $model->person->update(['email' => $model->email]);
-            }
-        });
+        self::updated(fn ($model) => $model->cascadeEmailUpdate());
 
-        self::creating(function ($model) {
-            if ($model->isDirty('email')) {
-                $model->person->update(['email' => $model->email]);
-            }
-        });
+        self::created(fn ($model) => $model->cascadeEmailUpdate());
+    }
+
+    private function cascadeEmailUpdate()
+    {
+        if ($this->isDirty('email')) {
+            $this->person->update(['email' => $this->email]);
+        }
     }
 }

@@ -1,15 +1,15 @@
 <?php
 
-namespace LaravelEnso\People\app\Forms\Builders;
+namespace LaravelEnso\People\App\Forms\Builders;
 
-use LaravelEnso\Forms\app\Services\Form;
-use LaravelEnso\People\app\Models\Person;
+use LaravelEnso\Forms\App\Services\Form;
+use LaravelEnso\People\App\Models\Person;
 
 class PersonForm
 {
     protected const TemplatePath = __DIR__.'/../Templates/person.json';
 
-    protected $form;
+    protected Form $form;
 
     public function __construct()
     {

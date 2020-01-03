@@ -1,6 +1,8 @@
 <?php
 
-Route::namespace('LaravelEnso\People\app\Http\Controllers')
+use Illuminate\Support\Facades\Route;
+
+Route::namespace('LaravelEnso\People\App\Http\Controllers')
     ->middleware(['web', 'auth', 'core'])
     ->prefix('api/administration/people')
     ->as('administration.people.')

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreatePeopleTable extends Migration
 {
@@ -33,14 +34,14 @@ class CreatePeopleTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('users', fn(Blueprint $table) => (
+        Schema::table('users', fn (Blueprint $table) => (
             $table->foreign('person_id')->references('id')->on('people')
         ));
     }
 
     public function down()
     {
-        Schema::table('users', fn(Blueprint $table) => (
+        Schema::table('users', fn (Blueprint $table) => (
             $table->dropForeign(['person_id'])
         ));
 
