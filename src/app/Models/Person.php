@@ -45,9 +45,8 @@ class Person extends Model
 
     public function company()
     {
-        return $this->companies->first(function ($company) {
-            return $company->pivot->is_main;
-        });
+        return $this->companies
+            ->first(fn($company) => $company->pivot->is_main);
     }
 
     public function gender()
@@ -71,12 +70,10 @@ class Person extends Model
     public function syncCompanies($companyIds, $mainCompanyId)
     {
         $pivotIds = collect($companyIds)
-            ->reduce(function ($pivot, $value) use ($mainCompanyId) {
-                return $pivot->put($value, [
-                    'is_main' => $value === $mainCompanyId,
-                    'is_mandatary' => false,
-                ]);
-            }, collect())->toArray();
+            ->reduce(fn($pivot, $value) => $pivot->put($value, [
+                'is_main' => $value === $mainCompanyId,
+                'is_mandatary' => false,
+            ]), collect())->toArray();
 
         $this->companies()->sync($pivotIds);
     }
