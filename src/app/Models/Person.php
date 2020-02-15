@@ -62,7 +62,7 @@ class Person extends Model
 
     public function gender()
     {
-        if (!$this->title) {
+        if (! $this->title) {
             return;
         }
 
