@@ -18,8 +18,13 @@ use LaravelEnso\TrackWho\App\Traits\UpdatedBy;
 
 class Person extends Model
 {
-    use Addressable, AvoidsDeletionConflicts, CreatedBy, Relations,
-        Rememberable, TableCache, UpdatedBy;
+    use Addressable,
+        AvoidsDeletionConflicts,
+        CreatedBy,
+        Relations,
+        Rememberable,
+        TableCache,
+        UpdatedBy;
 
     protected $fillable = [
         'title', 'name', 'appellative', 'uid', 'email', 'phone', 'birthday',
@@ -52,12 +57,12 @@ class Person extends Model
 
     public function appellative()
     {
-        return $this->person->appellative ?? $this->person->name;
+        return $this->appellative ?? $this->name;
     }
 
     public function gender()
     {
-        if (! $this->title) {
+        if (!$this->title) {
             return;
         }
 
