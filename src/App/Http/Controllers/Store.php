@@ -13,6 +13,8 @@ class Store extends Controller
 
     public function __invoke(ValidatePersonRequest $request, Person $person)
     {
+        $this->authorize('store', [$person, $request->get('companies')]);
+
         $person->fill($request->validated())->save();
 
         $person->syncCompanies(
