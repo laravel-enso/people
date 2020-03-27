@@ -42,7 +42,8 @@ class PersonTest extends TestCase
     {
         $response = $this->post(
             route('administration.people.store', [], false),
-            $this->testModel->toArray()
+            $this->testModel->toArray() +
+            ['companies' => []]
         );
 
         $person = Person::whereEmail($this->testModel->email)
@@ -65,7 +66,8 @@ class PersonTest extends TestCase
 
         $this->patch(
             route('administration.people.update', $this->testModel->id, false),
-            $this->testModel->toArray()
+            $this->testModel->toArray() +
+            ['companies' => []]
         )->assertStatus(200)
         ->assertJsonStructure(['message']);
 
