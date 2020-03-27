@@ -4,7 +4,6 @@ namespace LaravelEnso\People\App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class ValidatePersonRequest extends FormRequest
@@ -47,7 +46,4 @@ class ValidatePersonRequest extends FormRequest
         return ! optional($this->route('person'))->hasUser()
             || $this->get('email') === $this->route('person')->email;
     }
-
-
-
 }
