@@ -9,8 +9,6 @@ use LaravelEnso\People\App\Models\Person;
 
 class Edit extends Controller
 {
-    use AuthorizesRequests;
-
     public function __invoke(Person $person, PersonForm $form)
     {
         return ['form' => $form->edit($person)];

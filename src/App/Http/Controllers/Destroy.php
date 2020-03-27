@@ -12,6 +12,8 @@ class Destroy extends Controller
 
     public function __invoke(Person $person)
     {
+        $this->authorize('destroy', $person);
+
         $person->delete();
 
         return [
