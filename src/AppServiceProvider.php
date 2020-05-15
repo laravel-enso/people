@@ -3,12 +3,15 @@
 namespace LaravelEnso\People;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use LaravelEnso\People\App\Models\Person;
 
 class AppServiceProvider extends ServiceProvider
 {
     public function boot()
     {
         $this->load()
+            ->mapMorphs()
             ->publish();
     }
 
@@ -17,6 +20,15 @@ class AppServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
         $this->loadRoutesFrom(__DIR__.'/routes/api.php');
+
+        return $this;
+    }
+
+    private function mapMorphs()
+    {
+        Relation::morphMap([
+            Person::morphMapKey() => Person::class,
+        ]);
 
         return $this;
     }
