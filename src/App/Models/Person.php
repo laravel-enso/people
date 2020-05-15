@@ -9,6 +9,7 @@ use LaravelEnso\Companies\App\Models\Company;
 use LaravelEnso\Core\App\Models\User;
 use LaravelEnso\DynamicMethods\App\Traits\Relations;
 use LaravelEnso\Helpers\App\Traits\AvoidsDeletionConflicts;
+use LaravelEnso\Helpers\App\Traits\CascadesMorphMap;
 use LaravelEnso\People\App\Enums\Genders;
 use LaravelEnso\People\App\Enums\Titles;
 use LaravelEnso\Rememberable\App\Traits\Rememberable;
@@ -18,7 +19,8 @@ use LaravelEnso\TrackWho\App\Traits\UpdatedBy;
 
 class Person extends Model
 {
-    use Addressable,
+    use CascadesMorphMap,
+        Addressable,
         AvoidsDeletionConflicts,
         CreatedBy,
         Relations,
