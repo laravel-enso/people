@@ -2,8 +2,8 @@
 
 namespace LaravelEnso\People;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\ServiceProvider;
 use LaravelEnso\People\App\Models\Person;
 
 class AppServiceProvider extends ServiceProvider
