@@ -7,6 +7,15 @@
         "edit",
         "destroy"
     ],
+    "filters": [
+        {
+            "label": "Has User",
+            "data": "user.exists",
+            "type": "boolean",
+            "custom": true,
+            "value": false
+        }
+    ],
     "columns": [
         {
             "label": "Title",
