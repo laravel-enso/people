@@ -35,6 +35,8 @@ class Person extends Model
 
     protected $dates = ['birthday'];
 
+    protected $touches = ['user'];
+
     public function user()
     {
         return $this->hasOne(User::class);
@@ -53,8 +55,7 @@ class Person extends Model
 
     public function company()
     {
-        return $this->companies
-            ->first(fn ($company) => $company->pivot->is_main);
+        return $this->companies()->wherePivot('is_main', true)->first();
     }
 
     public function appellative()
