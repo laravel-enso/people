@@ -2,7 +2,7 @@
 
 namespace LaravelEnso\People;
 
-use LaravelEnso\People\App\Models\Person;
+use LaravelEnso\People\Models\Person;
 use LaravelEnso\Searchable\SearchServiceProvider as ServiceProvider;
 
 class SearchServiceProvider extends ServiceProvider

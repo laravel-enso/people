@@ -1,13 +1,13 @@
 <?php
 
-use Tests\TestCase;
-use LaravelEnso\Core\App\Models\User;
-use LaravelEnso\People\App\Models\Person;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use LaravelEnso\Forms\App\TestTraits\EditForm;
-use LaravelEnso\Forms\App\TestTraits\CreateForm;
-use LaravelEnso\Forms\App\TestTraits\DestroyForm;
-use LaravelEnso\Tables\App\Traits\Tests\Datatable;
+use LaravelEnso\Core\Models\User;
+use LaravelEnso\Forms\TestTraits\CreateForm;
+use LaravelEnso\Forms\TestTraits\DestroyForm;
+use LaravelEnso\Forms\TestTraits\EditForm;
+use LaravelEnso\People\Models\Person;
+use LaravelEnso\Tables\Traits\Tests\Datatable;
+use Tests\TestCase;
 
 class PersonTest extends TestCase
 {
@@ -43,7 +43,7 @@ class PersonTest extends TestCase
         $response = $this->post(
             route('administration.people.store', [], false),
             $this->testModel->toArray() +
-            ['companies' => []]
+                ['companies' => []]
         );
 
         $person = Person::whereEmail($this->testModel->email)
@@ -67,9 +67,9 @@ class PersonTest extends TestCase
         $this->patch(
             route('administration.people.update', $this->testModel->id, false),
             $this->testModel->toArray() +
-            ['companies' => []]
+                ['companies' => []]
         )->assertStatus(200)
-        ->assertJsonStructure(['message']);
+            ->assertJsonStructure(['message']);
 
         $this->assertEquals('updated', $this->testModel->fresh()->name);
     }
@@ -83,7 +83,7 @@ class PersonTest extends TestCase
             'query' => $this->testModel->name,
             'limit' => 10,
         ], false))
-        ->assertStatus(200)
-        ->assertJsonFragment(['name' => $this->testModel->name]);
+            ->assertStatus(200)
+            ->assertJsonFragment(['name' => $this->testModel->name]);
     }
 }

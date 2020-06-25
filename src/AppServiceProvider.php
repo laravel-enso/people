@@ -2,33 +2,24 @@
 
 namespace LaravelEnso\People;
 
-use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
-use LaravelEnso\People\App\Models\Person;
+use LaravelEnso\People\Models\Person;
 
 class AppServiceProvider extends ServiceProvider
 {
     public function boot()
     {
         $this->load()
-            ->mapMorphs()
             ->publish();
+
+        Person::morphMap();
     }
 
     private function load()
     {
-        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
-        $this->loadRoutesFrom(__DIR__.'/routes/api.php');
-
-        return $this;
-    }
-
-    private function mapMorphs()
-    {
-        Relation::morphMap([
-            Person::morphMapKey() => Person::class,
-        ]);
+        $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
 
         return $this;
     }
@@ -36,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     private function publish()
     {
         $this->publishes([
-            __DIR__.'/database/factories' => database_path('factories'),
+            __DIR__.'/../database/factories' => database_path('factories'),
         ], ['people-factory', 'enso-factories']);
     }
 }

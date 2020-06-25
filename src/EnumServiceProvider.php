@@ -3,8 +3,8 @@
 namespace LaravelEnso\People;
 
 use LaravelEnso\Enums\EnumServiceProvider as ServiceProvider;
-use LaravelEnso\People\App\Enums\Genders;
-use LaravelEnso\People\App\Enums\Titles;
+use LaravelEnso\People\Enums\Genders;
+use LaravelEnso\People\Enums\Titles;
 
 class EnumServiceProvider extends ServiceProvider
 {

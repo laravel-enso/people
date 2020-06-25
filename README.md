@@ -1,6 +1,6 @@
 # People
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/aa76029e3e4c471d91370e29534f436f)](https://www.codacy.com/app/laravel-enso/People?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=laravel-enso/people&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/be960df08ec54574941a262c824dc35e)](https://www.codacy.com/gh/laravel-enso/people?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=laravel-enso/people&amp;utm_campaign=Badge_Grade)
 [![StyleCI](https://github.styleci.io/repos/151952913/shield?branch=master)](https://github.styleci.io/repos/151952913)
 [![License](https://poser.pugx.org/laravel-enso/people/license)](https://packagist.org/packages/laravel-enso/people)
 [![Total Downloads](https://poser.pugx.org/laravel-enso/people/downloads)](https://packagist.org/packages/laravel-enso/people)
