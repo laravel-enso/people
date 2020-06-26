@@ -1,10 +1,12 @@
 {
     "routePrefix": "administration.people",
     "tabs": true,
-    "sections": [{
+    "sections": [
+        {
             "tab": "Personal",
             "columns": "custom",
-            "fields": [{
+            "fields": [
+                {
                     "label": "Title",
                     "name": "title",
                     "value": null,
@@ -39,7 +41,8 @@
         {
             "tab": "Personal",
             "columns": 3,
-            "fields": [{
+            "fields": [
+                {
                     "label": "Email",
                     "name": "email",
                     "value": null,
@@ -70,7 +73,8 @@
         {
             "tab": "Personal",
             "columns": "custom",
-            "fields": [{
+            "fields": [
+                {
                     "column": 4,
                     "label": "Unique Identifier",
                     "name": "uid",
@@ -103,7 +107,7 @@
                 {
                     "column": 12,
                     "label": "Notes",
-                    "name": "obs",
+                    "name": "notes",
                     "value": null,
                     "meta": {
                         "type": "textarea",
@@ -115,7 +119,8 @@
         {
             "tab": "Companies",
             "columns": 2,
-            "fields": [{
+            "fields": [
+                {
                     "label": "Companies",
                     "name": "companies",
                     "value": [],
