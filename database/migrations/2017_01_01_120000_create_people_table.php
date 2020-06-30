@@ -23,7 +23,7 @@ class CreatePeopleTable extends Migration
             $table->string('bank')->nullable();
             $table->string('bank_account')->nullable();
 
-            $table->text('obs')->nullable();
+            $table->text('notes')->nullable();
 
             $table->integer('created_by')->unsigned()->index()->nullable();
             $table->foreign('created_by')->references('id')->on('users');

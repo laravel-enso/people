@@ -28,7 +28,7 @@ class ValidatePersonRequest extends FormRequest
             'bank' => 'string|nullable',
             'bank_account' => 'string|nullable',
             'position' => 'integer|nullable',
-            'obs' => 'string|nullable',
+            'notes' => 'string|nullable',
             'companies' => 'array',
             'companies.*' => 'exists:companies,id',
             'company' => 'nullable|exists:companies,id|in:'.implode(',', $this->get('companies')),
