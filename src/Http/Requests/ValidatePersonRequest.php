@@ -31,7 +31,7 @@ class ValidatePersonRequest extends FormRequest
             'notes' => 'string|nullable',
             'companies' => 'array',
             'companies.*' => 'exists:companies,id',
-            'company' => 'nullable|exists:companies,id|in:'.implode(',', $this->get('companies')),
+            'company' => 'nullable|exists:companies,id|in:'.implode(',', $this->get('companies', [])),
         ];
     }
 
