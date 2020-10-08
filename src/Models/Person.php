@@ -11,6 +11,7 @@ use LaravelEnso\Core\Models\User;
 use LaravelEnso\DynamicMethods\Traits\Relations;
 use LaravelEnso\Helpers\Traits\AvoidsDeletionConflicts;
 use LaravelEnso\Helpers\Traits\CascadesMorphMap;
+use LaravelEnso\Helpers\Traits\HasFactory;
 use LaravelEnso\People\Enums\Genders;
 use LaravelEnso\People\Enums\Titles;
 use LaravelEnso\Rememberable\Traits\Rememberable;
@@ -24,6 +25,7 @@ class Person extends Model
         AvoidsDeletionConflicts,
         CascadesMorphMap,
         CreatedBy,
+        HasFactory,
         Relations,
         Rememberable,
         RoutesNotifications,

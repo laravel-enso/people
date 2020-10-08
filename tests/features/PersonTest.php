@@ -25,7 +25,7 @@ class PersonTest extends TestCase
         $this->seed()
             ->actingAs(User::first());
 
-        $this->testModel = factory(Person::class)
+        $this->testModel = Person::factory()
             ->make();
     }
 
