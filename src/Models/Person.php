@@ -2,6 +2,7 @@
 
 namespace LaravelEnso\People\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\RoutesNotifications;
 use Illuminate\Support\Collection;
@@ -11,7 +12,6 @@ use LaravelEnso\Core\Models\User;
 use LaravelEnso\DynamicMethods\Traits\Relations;
 use LaravelEnso\Helpers\Traits\AvoidsDeletionConflicts;
 use LaravelEnso\Helpers\Traits\CascadesMorphMap;
-use LaravelEnso\Helpers\Traits\HasFactory;
 use LaravelEnso\People\Enums\Genders;
 use LaravelEnso\People\Enums\Titles;
 use LaravelEnso\Rememberable\Traits\Rememberable;
