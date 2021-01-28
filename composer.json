@@ -39,6 +39,7 @@
                 "LaravelEnso\\People\\AppServiceProvider",
                 "LaravelEnso\\People\\AuthServiceProvider",
                 "LaravelEnso\\People\\SearchServiceProvider",
+                "LaravelEnso\\People\\AddressableServiceProvider",
                 "LaravelEnso\\People\\EnumServiceProvider"
             ]
         }

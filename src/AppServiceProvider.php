@@ -3,7 +3,6 @@
 namespace LaravelEnso\People;
 
 use Illuminate\Support\ServiceProvider;
-use LaravelEnso\Addresses\Services\Addressable;
 use LaravelEnso\People\Models\Person;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,7 +13,6 @@ class AppServiceProvider extends ServiceProvider
             ->publish();
 
         Person::morphMap();
-        Addressable::register(Person::class);
     }
 
     private function load()
