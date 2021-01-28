@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\RoutesNotifications;
 use Illuminate\Support\Collection;
-use LaravelEnso\Addresses\Traits\Addressable;
 use LaravelEnso\Companies\Models\Company;
 use LaravelEnso\Core\Models\User;
 use LaravelEnso\DynamicMethods\Traits\Relations;
@@ -21,8 +20,7 @@ use LaravelEnso\TrackWho\Traits\UpdatedBy;
 
 class Person extends Model
 {
-    use Addressable,
-        AvoidsDeletionConflicts,
+    use AvoidsDeletionConflicts,
         CascadesMorphMap,
         CreatedBy,
         HasFactory,
