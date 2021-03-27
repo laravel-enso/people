@@ -54,11 +54,9 @@ class Person extends Model
         return $this->user()->exists();
     }
 
-    public function company(bool $load = false)
+    public function company()
     {
-        return $load
-            ? $this->companies->where('pivot.is_main', true)->first()
-            : $this->companies()->wherePivot('is_main', true)->first();
+        return $this->companies->where('pivot.is_main', true)->first();
     }
 
     public function appellative()
