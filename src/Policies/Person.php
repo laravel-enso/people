@@ -2,8 +2,8 @@
 
 namespace LaravelEnso\People\Policies;
 
-use LaravelEnso\Core\Models\User;
 use LaravelEnso\People\Models\Person as Model;
+use LaravelEnso\Users\Models\User;
 
 class Person
 {

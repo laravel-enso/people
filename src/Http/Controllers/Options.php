@@ -12,5 +12,5 @@ class Options extends Controller
 
     protected $model = Person::class;
 
-    protected $queryAttributes = ['name', 'appellative', 'uid', 'phone'];
+    protected $queryAttributes = ['name', 'appellative', 'nin', 'phone'];
 }

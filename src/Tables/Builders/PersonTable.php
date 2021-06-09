@@ -15,7 +15,7 @@ class PersonTable implements Table, CustomFilter
     public function query(): Builder
     {
         return Person::selectRaw('
-            people.id, people.title, people.name, people.appellative, people.email, people.phone,
+            people.id, people.name, people.appellative, people.email, people.phone,
             people.birthday, CASE WHEN users.id is null THEN 0 ELSE 1 END as "user",
             companies.name as company, people.created_at
         ')->leftJoin('users', 'people.id', '=', 'users.person_id')
@@ -29,7 +29,7 @@ class PersonTable implements Table, CustomFilter
 
     public function filterApplies(Obj $params): bool
     {
-        return optional($params->get('user'))->filled('exists') ?? false;
+        return $params->get('user')?->filled('exists') ?? false;
     }
 
     public function filter(Builder $query, Obj $params)

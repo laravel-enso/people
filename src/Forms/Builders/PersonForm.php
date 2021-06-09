@@ -32,8 +32,8 @@ class PersonForm
         }
 
         return $this->form
-            ->value('company', optional($person->company())->id)
-            ->append('userId', optional($person->user)->id)
+            ->value('company', $person->company()?->id)
+            ->append('userId', $person->user?->id)
             ->edit($person);
     }
 }

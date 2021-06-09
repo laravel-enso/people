@@ -21,7 +21,7 @@ class ValidatePersonRequest extends FormRequest
             'title' => 'integer|nullable',
             'name' => 'required|max:50',
             'appellative' => 'string|max:12|nullable',
-            'uid' => ['string', 'nullable', $this->unique('uid')],
+            'nin' => ['string', 'nullable', $this->unique('nin')],
             'email' => ['email', 'nullable', $this->unique('email')],
             'phone' => 'max:30|nullable',
             'birthday' => 'nullable|date',
@@ -38,12 +38,12 @@ class ValidatePersonRequest extends FormRequest
     protected function unique(string $attribute)
     {
         return Rule::unique('people', $attribute)
-            ->ignore(optional($this->route('person'))->id);
+            ->ignore($this->route('person')?->id);
     }
 
     private function emailUnchagedForUser()
     {
-        return ! optional($this->route('person'))->hasUser()
+        return ! $this->route('person')?->hasUser()
             || $this->get('email') === $this->route('person')->email;
     }
 }

@@ -7,23 +7,16 @@
         "edit",
         "destroy"
     ],
-    "filters": [{
-        "label": "Has User",
-        "data": "user.exists",
-        "type": "boolean",
-        "custom": true,
-        "value": false
-    }],
-    "columns": [{
-            "label": "Title",
-            "name": "title",
-            "data": "people.title",
-            "meta": [
-                "searchable",
-                "sortable"
-            ],
-            "enum": "LaravelEnso\\People\\Enums\\Titles"
-        },
+    "filters": [
+        {
+            "label": "Has User",
+            "data": "user.exists",
+            "type": "boolean",
+            "custom": true,
+            "value": false
+        }
+    ],
+    "columns": [
         {
             "label": "Name",
             "name": "name",

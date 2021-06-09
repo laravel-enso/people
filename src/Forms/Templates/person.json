@@ -4,23 +4,12 @@
     "sections": [
         {
             "tab": "Personal",
-            "columns": "custom",
+            "columns": 2,
             "fields": [
-                {
-                    "label": "Title",
-                    "name": "title",
-                    "value": null,
-                    "column": 2,
-                    "meta": {
-                        "type": "select",
-                        "options": "LaravelEnso\\People\\Enums\\Titles"
-                    }
-                },
                 {
                     "label": "Name",
                     "name": "name",
                     "value": "",
-                    "column": 6,
                     "meta": {
                         "type": "input",
                         "content": "text"
@@ -30,7 +19,6 @@
                     "label": "Appellative",
                     "name": "appellative",
                     "value": "",
-                    "column": 4,
                     "meta": {
                         "type": "input",
                         "content": "text"
@@ -76,8 +64,8 @@
             "fields": [
                 {
                     "column": 4,
-                    "label": "Unique Identifier",
-                    "name": "uid",
+                    "label": "NIN",
+                    "name": "nin",
                     "value": "",
                     "meta": {
                         "type": "input",

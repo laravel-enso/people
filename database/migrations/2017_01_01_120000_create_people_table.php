@@ -11,11 +11,10 @@ class CreatePeopleTable extends Migration
         Schema::create('people', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->tinyInteger('title')->nullable();
             $table->string('name')->index();
             $table->string('appellative')->index()->nullable();
 
-            $table->string('uid')->nullable()->unique();
+            $table->string('nin')->nullable()->unique();
             $table->string('email')->unique()->nullable();
             $table->string('phone')->nullable();
             $table->date('birthday')->nullable();
@@ -34,16 +33,12 @@ class CreatePeopleTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('users', fn (Blueprint $table) => (
-            $table->foreign('person_id')->references('id')->on('people')
-        ));
+        Schema::table('users', fn (Blueprint $table) => ($table->foreign('person_id')->references('id')->on('people')));
     }
 
     public function down()
     {
-        Schema::table('users', fn (Blueprint $table) => (
-            $table->dropForeign(['person_id'])
-        ));
+        Schema::table('users', fn (Blueprint $table) => ($table->dropForeign(['person_id'])));
 
         Schema::dropIfExists('people');
     }
