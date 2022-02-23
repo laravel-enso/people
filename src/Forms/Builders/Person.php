@@ -7,7 +7,7 @@ use LaravelEnso\People\Models\Person as Model;
 
 class Person
 {
-    private const TemplatePath = __DIR__ . '/../Templates/person.json';
+    private const TemplatePath = __DIR__.'/../Templates/person.json';
 
     protected Form $form;
 
