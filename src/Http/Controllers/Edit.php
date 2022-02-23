@@ -3,12 +3,12 @@
 namespace LaravelEnso\People\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use LaravelEnso\People\Forms\Builders\PersonForm;
-use LaravelEnso\People\Models\Person;
+use LaravelEnso\People\Forms\Builders\Person;
+use LaravelEnso\People\Models\Person as Model;
 
 class Edit extends Controller
 {
-    public function __invoke(Person $person, PersonForm $form)
+    public function __invoke(Model $person, Person $form)
     {
         return ['form' => $form->edit($person)];
     }

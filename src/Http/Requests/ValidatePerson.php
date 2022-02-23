@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use LaravelEnso\Helpers\Traits\FiltersRequest;
 
-class ValidatePersonRequest extends FormRequest
+class ValidatePerson extends FormRequest
 {
     use FiltersRequest;
 
@@ -31,7 +31,7 @@ class ValidatePersonRequest extends FormRequest
             'notes' => 'string|nullable',
             'companies' => 'array',
             'companies.*' => 'exists:companies,id',
-            'company' => 'nullable|exists:companies,id|in:'.implode(',', $this->get('companies')),
+            'company' => 'nullable|exists:companies,id|in:' . implode(',', $this->get('companies')),
         ];
     }
 
@@ -43,7 +43,7 @@ class ValidatePersonRequest extends FormRequest
 
     private function emailUnchagedForUser()
     {
-        return ! $this->route('person')?->hasUser()
+        return !$this->route('person')?->hasUser()
             || $this->get('email') === $this->route('person')->email;
     }
 }
