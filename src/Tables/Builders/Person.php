@@ -4,17 +4,17 @@ namespace LaravelEnso\People\Tables\Builders;
 
 use Illuminate\Database\Eloquent\Builder;
 use LaravelEnso\Helpers\Services\Obj;
-use LaravelEnso\People\Models\Person;
+use LaravelEnso\People\Models\Person as Model;
 use LaravelEnso\Tables\Contracts\CustomFilter;
 use LaravelEnso\Tables\Contracts\Table;
 
-class PersonTable implements Table, CustomFilter
+class Person implements Table, CustomFilter
 {
-    protected const TemplatePath = __DIR__.'/../Templates/people.json';
+    private const TemplatePath = __DIR__.'/../Templates/people.json';
 
     public function query(): Builder
     {
-        return Person::selectRaw('
+        return Model::selectRaw('
             people.id, people.name, people.appellative, people.email, people.phone,
             people.birthday, CASE WHEN users.id is null THEN 0 ELSE 1 END as "user",
             companies.name as company, people.created_at

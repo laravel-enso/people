@@ -4,14 +4,14 @@ namespace LaravelEnso\People\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
-use LaravelEnso\People\Http\Requests\ValidatePersonRequest;
+use LaravelEnso\People\Http\Requests\ValidatePerson;
 use LaravelEnso\People\Models\Person;
 
 class Update extends Controller
 {
     use AuthorizesRequests;
 
-    public function __invoke(ValidatePersonRequest $request, Person $person)
+    public function __invoke(ValidatePerson $request, Person $person)
     {
         $this->authorize('update', [$person, $request->get('companies')]);
 

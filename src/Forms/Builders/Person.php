@@ -3,17 +3,17 @@
 namespace LaravelEnso\People\Forms\Builders;
 
 use LaravelEnso\Forms\Services\Form;
-use LaravelEnso\People\Models\Person;
+use LaravelEnso\People\Models\Person as Model;
 
-class PersonForm
+class Person
 {
-    protected const TemplatePath = __DIR__.'/../Templates/person.json';
+    private const TemplatePath = __DIR__.'/../Templates/person.json';
 
     protected Form $form;
 
     public function __construct()
     {
-        $this->form = new Form(static::TemplatePath);
+        $this->form = new Form($this->templatePath());
     }
 
     public function create()
@@ -21,7 +21,7 @@ class PersonForm
         return $this->form->create();
     }
 
-    public function edit(Person $person)
+    public function edit(Model $person)
     {
         if ($person->hasUser()) {
             $this->form->meta(
@@ -35,5 +35,10 @@ class PersonForm
             ->value('company', $person->company()?->id)
             ->append('userId', $person->user?->id)
             ->edit($person);
+    }
+
+    protected function templatePath(): string
+    {
+        return self::TemplatePath;
     }
 }
