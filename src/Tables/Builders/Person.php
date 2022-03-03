@@ -43,6 +43,6 @@ class Person implements Table, CustomFilter
 
     public function templatePath(): string
     {
-        return static::TemplatePath;
+        return self::TemplatePath;
     }
 }
