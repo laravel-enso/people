@@ -15,6 +15,7 @@ class Person extends JsonResource
             'appellative' => $this->appellative,
             'birthday' => $this->birthday?->format(Config::get('config.enso.dateFormat')),
             'phone' => $this->phone,
+            'email' => $this->email,
         ];
     }
 }
