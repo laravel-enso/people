@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public function up()
     {
         Schema::create('people', function (Blueprint $table) {
@@ -15,6 +14,9 @@ return new class extends Migration
             $table->string('appellative')->index()->nullable();
 
             $table->string('nin')->nullable()->unique();
+            $table->string('id_series')->nullable();
+            $table->unsignedBigInteger('id_number')->nullable();
+
             $table->string('email')->unique()->nullable();
             $table->string('phone')->nullable();
             $table->date('birthday')->nullable();

@@ -63,9 +63,29 @@
             "columns": "custom",
             "fields": [
                 {
-                    "column": 4,
+                    "column": 6,
                     "label": "NIN",
                     "name": "nin",
+                    "value": "",
+                    "meta": {
+                        "type": "input",
+                        "content": "text"
+                    }
+                },
+                {
+                    "column": 2,
+                    "label": "ID Series",
+                    "name": "id_series",
+                    "value": "",
+                    "meta": {
+                        "type": "input",
+                        "content": "text"
+                    }
+                },
+                {
+                    "column": 4,
+                    "label": "ID Number",
+                    "name": "id_number",
                     "value": "",
                     "meta": {
                         "type": "input",
