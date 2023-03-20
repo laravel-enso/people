@@ -22,6 +22,8 @@ class ValidatePerson extends FormRequest
             'name' => 'required|max:50',
             'appellative' => 'string|max:12|nullable',
             'nin' => ['string', 'nullable', $this->unique('nin')],
+            'id_series' => 'nullable|string|max:255',
+            'id_number' => 'nullable|integer',
             'email' => ['email', 'nullable', $this->unique('email')],
             'phone' => 'max:30|nullable',
             'birthday' => 'nullable|date',
