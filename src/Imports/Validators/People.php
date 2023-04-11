@@ -31,7 +31,5 @@ class People extends Validator
                 'nin' => $nin,
             ]));
         }
-
-
     }
 }
