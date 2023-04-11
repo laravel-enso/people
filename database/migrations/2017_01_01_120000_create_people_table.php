@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     public function up()
     {
         Schema::create('people', function (Blueprint $table) {
@@ -35,12 +36,12 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        Schema::table('users', fn (Blueprint $table) => ($table->foreign('person_id')->references('id')->on('people')));
+        Schema::table('users', fn (Blueprint $table) => $table->foreign('person_id')->references('id')->on('people'));
     }
 
     public function down()
     {
-        Schema::table('users', fn (Blueprint $table) => ($table->dropForeign(['person_id'])));
+        Schema::table('users', fn (Blueprint $table) => $table->dropForeign(['person_id']));
 
         Schema::dropIfExists('people');
     }
