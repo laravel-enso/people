@@ -13,6 +13,19 @@ class PersonFactory extends Factory
     public function definition()
     {
         return [
+            'name' => null,
+            'appellative' => null,
+            'email' => null,
+            'phone' => null,
+            'birthday' => null,
+            'bank' => null,
+            'bank_account' => null,
+        ];
+    }
+
+    public function test()
+    {
+        return $this->state(fn () => [
             'name' => $this->faker->name,
             'appellative' => $this->faker->firstName,
             'email' => $this->faker->unique()->safeEmail,
@@ -20,6 +33,6 @@ class PersonFactory extends Factory
             'birthday' => Carbon::now()->subYears(rand(15, 40)),
             'bank' => $this->faker->word,
             'bank_account' => $this->faker->bankAccountNumber,
-        ];
+        ]);
     }
 }
