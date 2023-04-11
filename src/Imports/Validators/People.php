@@ -14,21 +14,21 @@ class People extends Validator
         $name = $row->get('name');
         if (Person::whereName($name)->exists()) {
             $this->addError(__('Name :name exist.', [
-                'name' => $name
+                'name' => $name,
             ]));
         }
 
         $email = $row->get('email');
         if (Person::whereEmail($email)->exists()) {
             $this->addError(__('Email :email already exists.', [
-                'email' => $email
+                'email' => $email,
             ]));
         }
 
         $nin = $row->get('nin');
         if (Person::whereNin($nin)->exists()) {
             $this->addError(__('Nin :nin already exists.', [
-                'nin' => $nin
+                'nin' => $nin,
             ]));
         }
 
