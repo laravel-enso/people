@@ -5,12 +5,11 @@
         {
             "name": "people",
             "chunkSize": 1500,
-            "importerClass": "LaravelEnso\\People\\Imports\\Importers\\People",
-            "validatorClass": "LaravelEnso\\People\\Imports\\Validators\\People",
+            "importerClass": "LaravelEnso\\People\\Imports\\Importers\\Person",
             "columns": [
                 {
                     "name": "name",
-                    "validations": "required|max:50"
+                    "validations": "required|max:50|unique:people,name"
                 },
                 {
                     "name": "appellative",
