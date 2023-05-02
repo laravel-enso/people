@@ -1,0 +1,49 @@
+{
+    "timeout": 3000,
+    "queue": "sync",
+    "sheets": [
+        {
+            "name": "people",
+            "chunkSize": 1500,
+            "importerClass": "LaravelEnso\\People\\Imports\\Importers\\Person",
+            "columns": [
+                {
+                    "name": "name",
+                    "validations": "required|max:50|unique:people,name"
+                },
+                {
+                    "name": "appellative",
+                    "validations": "string|nullable|max:12"
+                },
+                {
+                    "name": "nin",
+                    "validations": "bail|nullable|string|unique:people,nin"
+                },
+                {
+                    "name": "email",
+                    "validations": "nullable|unique:people,email"
+                },
+                {
+                    "name": "phone",
+                    "validations": "nullable|max:30"
+                },
+                {
+                    "name": "birthday",
+                    "validations": "date|nullable"
+                },
+                {
+                    "name": "bank",
+                    "validations": "nullable"
+                },
+                {
+                    "name": "bank_account",
+                    "validations": "nullable"
+                },
+                {
+                    "name": "notes",
+                    "validations": "string|nullable"
+                }
+            ]
+        }
+    ]
+}
