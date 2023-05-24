@@ -33,7 +33,7 @@ class ValidatePerson extends FormRequest
             'notes' => 'string|nullable',
             'companies' => 'array',
             'companies.*' => 'exists:companies,id',
-            'company' => 'nullable|exists:companies,id|in:' . implode(',', $this->get('companies')),
+            'company' => 'nullable|exists:companies,id|in:'.implode(',', $this->get('companies')),
         ];
     }
 
@@ -45,7 +45,7 @@ class ValidatePerson extends FormRequest
 
     private function emailUnchagedForUser()
     {
-        return !$this->route('person')?->hasUser()
+        return ! $this->route('person')?->hasUser()
             || $this->get('email') === $this->route('person')->email;
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use LaravelEnso\Upgrade\Contracts\MigratesTable;
 
-class SeriesAndNumber implements MigratesTable
+class IdNumber implements MigratesTable
 {
     public function isMigrated(): bool
     {
