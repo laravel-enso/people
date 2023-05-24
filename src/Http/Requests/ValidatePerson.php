@@ -23,7 +23,7 @@ class ValidatePerson extends FormRequest
             'appellative' => 'string|max:12|nullable',
             'nin' => ['string', 'nullable', $this->unique('nin')],
             'id_series' => 'nullable|string|max:255',
-            'id_number' => 'nullable|integer',
+            'id_number' => 'nullable|string|max:255',
             'email' => ['email', 'nullable', $this->unique('email')],
             'phone' => 'max:30|nullable',
             'birthday' => 'nullable|date',
@@ -33,7 +33,7 @@ class ValidatePerson extends FormRequest
             'notes' => 'string|nullable',
             'companies' => 'array',
             'companies.*' => 'exists:companies,id',
-            'company' => 'nullable|exists:companies,id|in:'.implode(',', $this->get('companies')),
+            'company' => 'nullable|exists:companies,id|in:' . implode(',', $this->get('companies')),
         ];
     }
 
@@ -45,7 +45,7 @@ class ValidatePerson extends FormRequest
 
     private function emailUnchagedForUser()
     {
-        return ! $this->route('person')?->hasUser()
+        return !$this->route('person')?->hasUser()
             || $this->get('email') === $this->route('person')->email;
     }
 }
