@@ -46,6 +46,14 @@ class Person extends Model
         return $this->belongsToMany(Company::class)
             ->withPivot(['position', 'is_main']);
     }
+    
+    public function mandataryFor(): Collection
+    {
+        return $this->companies()
+            ->withPivot('position')
+            ->wherePivot('is_mandatary', true)
+            ->get();
+    }
 
     public function hasUser()
     {
@@ -74,7 +82,8 @@ class Person extends Model
         $pivotIds = Collection::wrap($companyIds)
             ->reduce(fn ($pivot, $value) => $pivot->put($value, [
                 'is_main' => $value === $mainCompanyId,
-                'is_mandatary' => false,
+                'is_mandatary' => $this->mandataryFor()->pluck('id')
+                    ->contains($value),
             ]), new Collection());
 
         $this->companies()->sync($pivotIds->toArray());
