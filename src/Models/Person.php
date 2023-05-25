@@ -46,7 +46,7 @@ class Person extends Model
         return $this->belongsToMany(Company::class)
             ->withPivot(['position', 'is_main']);
     }
-    
+
     public function mandataryFor(): Collection
     {
         return $this->companies()
