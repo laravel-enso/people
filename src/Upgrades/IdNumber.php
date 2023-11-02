@@ -6,6 +6,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use LaravelEnso\Upgrade\Contracts\MigratesTable;
 use LaravelEnso\Upgrade\Contracts\Prioritization;
+use LaravelEnso\Upgrade\Helpers\Table;
 
 class IdNumber implements MigratesTable, Prioritization
 {
@@ -16,7 +17,8 @@ class IdNumber implements MigratesTable, Prioritization
 
     public function isMigrated(): bool
     {
-        return Schema::getColumnType('people', 'id_number') === 'string';
+        return Table::hasColumn('people', 'id_number') &&
+            Schema::getColumnType('people', 'id_number') === 'string';
     }
 
     public function migrateTable(): void
