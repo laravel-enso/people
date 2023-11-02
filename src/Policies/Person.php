@@ -9,7 +9,9 @@ class Person
 {
     public function before(User $user)
     {
-        return $user->isSuperior();
+        if ($user->isSuperior()) {
+            return true;
+        }
     }
 
     public function store(User $user, Model $model, array $companies)
