@@ -8,7 +8,6 @@ use Illuminate\Notifications\RoutesNotifications;
 use Illuminate\Support\Collection;
 use LaravelEnso\Addresses\Traits\Addressable;
 use LaravelEnso\Companies\Models\Company;
-use LaravelEnso\DynamicMethods\Traits\Relations;
 use LaravelEnso\Helpers\Traits\AvoidsDeletionConflicts;
 use LaravelEnso\Helpers\Traits\CascadesMorphMap;
 use LaravelEnso\Rememberable\Traits\Rememberable;
@@ -24,7 +23,6 @@ class Person extends Model
         CascadesMorphMap,
         CreatedBy,
         HasFactory,
-        Relations,
         Rememberable,
         RoutesNotifications,
         TableCache,
