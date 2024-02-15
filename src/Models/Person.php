@@ -30,7 +30,9 @@ class Person extends Model
 
     protected $guarded = ['id'];
 
-    protected $dates = ['birthday'];
+    protected $casts = [
+        'birthday' => 'date',
+    ];
 
     protected $touches = ['user'];
 
