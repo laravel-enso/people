@@ -30,10 +30,6 @@ class Person extends Model
 
     protected $guarded = ['id'];
 
-    protected $casts = [
-        'birthday' => 'date',
-    ];
-
     protected $touches = ['user'];
 
     public function user()
@@ -87,5 +83,12 @@ class Person extends Model
             ]), new Collection());
 
         $this->companies()->sync($pivotIds->toArray());
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'birthday' => 'date',
+        ];
     }
 }
