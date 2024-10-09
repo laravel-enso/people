@@ -13,7 +13,7 @@ class Person extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'appellative' => $this->appellative,
-            'birthday' => $this->birthday?->format(Config::get('config.enso.dateFormat')),
+            'birthday' => $this->birthday?->format(Config::get('enso.config.dateFormat')),
             'phone' => $this->phone,
             'email' => $this->email,
         ];
