@@ -19,6 +19,7 @@
     ],
     "require": {
         "laravel-enso/addresses": "^5.0",
+        "laravel-enso/companies": "^4.0",
         "laravel-enso/core": "^12.0",
         "laravel-enso/dynamic-methods": "^3.0",
         "laravel-enso/enums": "^2.0",
@@ -27,8 +28,10 @@
         "laravel-enso/migrator": "^2.0",
         "laravel-enso/rememberable": "^3.0",
         "laravel-enso/searchable": "^2.1",
+        "laravel-enso/select": "^4.0",
+        "laravel-enso/tables": "^4.0",
         "laravel-enso/track-who": "^2.0",
-        "laravel-enso/tables": "^4.0"
+        "laravel-enso/users": "^2.0"
     },
     "autoload": {
         "psr-4": {
