@@ -8,6 +8,7 @@ use LaravelEnso\People\Models\Person;
 use LaravelEnso\Tables\Traits\Tests\Datatable;
 use LaravelEnso\Users\Models\User;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class PersonTest extends TestCase
 {
@@ -26,7 +27,7 @@ class PersonTest extends TestCase
         $this->testModel = Person::factory()->test()->make();
     }
 
-    /** @test */
+    #[Test]
     public function can_view_create_form()
     {
         $this->get(route($this->permissionGroup.'.create', false))
@@ -34,7 +35,7 @@ class PersonTest extends TestCase
             ->assertJsonStructure(['form']);
     }
 
-    /** @test */
+    #[Test]
     public function can_store_person()
     {
         $response = $this->post(
@@ -54,7 +55,7 @@ class PersonTest extends TestCase
             ]);
     }
 
-    /** @test */
+    #[Test]
     public function can_update_person()
     {
         $this->testModel->save();
@@ -71,7 +72,7 @@ class PersonTest extends TestCase
         $this->assertEquals('updated', $this->testModel->fresh()->name);
     }
 
-    /** @test */
+    #[Test]
     public function get_option_list()
     {
         $this->testModel->save();
