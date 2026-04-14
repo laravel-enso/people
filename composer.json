@@ -30,7 +30,7 @@
         "laravel-enso/searchable": "^2.1",
         "laravel-enso/select": "^5.0",
         "laravel-enso/tables": "^5.0",
-        "laravel-enso/track-who": "^2.0",
+        "laravel-enso/track-who": "^3.0",
         "laravel-enso/users": "^2.8"
     },
     "autoload": {
