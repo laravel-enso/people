@@ -23,9 +23,9 @@ class Store extends Controller
         );
 
         return [
-            'message' => __('The person was successfully created'),
+            'message'  => __('The person was successfully created'),
             'redirect' => 'administration.people.edit',
-            'param' => ['person' => $person->id],
+            'param'    => ['person' => $person->id],
         ];
     }
 }

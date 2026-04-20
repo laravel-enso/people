@@ -18,15 +18,15 @@ use LaravelEnso\Users\Models\User;
 
 class Person extends Model
 {
-    use Addressable,
-        AvoidsDeletionConflicts,
-        CascadesMorphMap,
-        CreatedBy,
-        HasFactory,
-        Rememberable,
-        RoutesNotifications,
-        TableCache,
-        UpdatedBy;
+    use Addressable;
+    use AvoidsDeletionConflicts;
+    use CascadesMorphMap;
+    use CreatedBy;
+    use HasFactory;
+    use Rememberable;
+    use RoutesNotifications;
+    use TableCache;
+    use UpdatedBy;
 
     protected $guarded = ['id'];
 
@@ -77,7 +77,7 @@ class Person extends Model
     {
         $pivotIds = Collection::wrap($companyIds)
             ->reduce(fn ($pivot, $value) => $pivot->put($value, [
-                'is_main' => $value === $mainCompanyId,
+                'is_main'      => $value === $mainCompanyId,
                 'is_mandatary' => $this->mandataryFor()->pluck('id')
                     ->contains($value),
             ]), new Collection());

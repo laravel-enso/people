@@ -11,6 +11,6 @@ class Genders extends Enum
 
     protected static array $data = [
         self::Female => 'female',
-        self::Male => 'male',
+        self::Male   => 'male',
     ];
 }

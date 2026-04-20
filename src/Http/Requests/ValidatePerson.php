@@ -21,22 +21,22 @@ class ValidatePerson extends FormRequest
         $email = App::runningUnitTests() ? 'email:rfc' : 'email:rfc,dns';
 
         return [
-            'title' => 'integer|nullable',
-            'name' => 'required|max:50',
-            'appellative' => 'string|max:12|nullable',
-            'nin' => ['string', 'nullable', $this->unique('nin')],
-            'id_series' => 'nullable|string|max:255',
-            'id_number' => 'nullable|string|max:255',
-            'email' => ['nullable', $email, $this->unique('email')],
-            'phone' => 'max:30|nullable',
-            'birthday' => 'nullable|date',
-            'bank' => 'string|nullable',
+            'title'        => 'integer|nullable',
+            'name'         => 'required|max:50',
+            'appellative'  => 'string|max:12|nullable',
+            'nin'          => ['string', 'nullable', $this->unique('nin')],
+            'id_series'    => 'nullable|string|max:255',
+            'id_number'    => 'nullable|string|max:255',
+            'email'        => ['nullable', $email, $this->unique('email')],
+            'phone'        => 'max:30|nullable',
+            'birthday'     => 'nullable|date',
+            'bank'         => 'string|nullable',
             'bank_account' => 'string|nullable',
-            'position' => 'integer|nullable',
-            'notes' => 'string|nullable',
-            'companies' => 'array',
-            'companies.*' => 'exists:companies,id',
-            'company' => 'nullable|exists:companies,id|in:'.implode(',', $this->get('companies')),
+            'position'     => 'integer|nullable',
+            'notes'        => 'string|nullable',
+            'companies'    => 'array',
+            'companies.*'  => 'exists:companies,id',
+            'company'      => 'nullable|exists:companies,id|in:'.implode(',', $this->get('companies')),
         ];
     }
 
@@ -48,7 +48,7 @@ class ValidatePerson extends FormRequest
 
     private function emailUnchagedForUser()
     {
-        return ! $this->route('person')?->hasUser()
+        return !$this->route('person')?->hasUser()
             || $this->get('email') === $this->route('person')->email;
     }
 }

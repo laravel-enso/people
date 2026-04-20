@@ -17,7 +17,7 @@ class Destroy extends Controller
         $person->delete();
 
         return [
-            'message' => __('The person was successfully deleted'),
+            'message'  => __('The person was successfully deleted'),
             'redirect' => 'administration.people.index',
         ];
     }
