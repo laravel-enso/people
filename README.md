@@ -79,6 +79,10 @@ Required Enso packages:
 - [`laravel-enso/tables`](https://docs.laravel-enso.com/backend/tables.html) [↗](https://github.com/laravel-enso/tables)
 - [`laravel-enso/track-who`](https://docs.laravel-enso.com/backend/track-who.html) [↗](https://github.com/laravel-enso/track-who)
 
+Companion frontend package:
+
+- [`@enso-ui/people`](https://docs.laravel-enso.com/frontend/people.html) [↗](https://github.com/enso-ui/people)
+
 ## Contributions
 
 are welcome. Pull requests are great, but issues are good too.
