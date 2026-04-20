@@ -82,7 +82,6 @@ Required Enso packages:
 Companion frontend package:
 
 - [`@enso-ui/people`](https://docs.laravel-enso.com/frontend/people.html) [↗](https://github.com/enso-ui/people)
-
 ## Contributions
 
 are welcome. Pull requests are great, but issues are good too.
