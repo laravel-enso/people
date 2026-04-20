@@ -1,12 +1,12 @@
 {
     "name": "laravel-enso/people",
-    "description": "Person management dependency for Laravel Enso",
+    "description": "Person management for Laravel Enso",
     "keywords": [
         "laravel-enso",
         "people",
         "person-management"
     ],
-    "homepage": "https://github.com/laravel-enso/People",
+    "homepage": "https://github.com/laravel-enso/people",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -19,19 +19,16 @@
     ],
     "require": {
         "laravel-enso/addresses": "^5.0",
-        "laravel-enso/companies": "^4.6",
-        "laravel-enso/core": "^12.0",
-        "laravel-enso/dynamic-methods": "^4.0",
-        "laravel-enso/enums": "^3.0",
-        "laravel-enso/forms": "^5.0",
-        "laravel-enso/helpers": "^4.0",
+        "laravel-enso/core": "^10.0",
+        "laravel-enso/dynamic-methods": "^3.0",
+        "laravel-enso/enums": "^2.0",
+        "laravel-enso/forms": "^4.0",
+        "laravel-enso/helpers": "^3.0",
         "laravel-enso/migrator": "^2.0",
-        "laravel-enso/rememberable": "^4.0",
+        "laravel-enso/rememberable": "^3.0",
         "laravel-enso/searchable": "^2.1",
-        "laravel-enso/select": "^5.0",
-        "laravel-enso/tables": "^5.0",
-        "laravel-enso/track-who": "^3.0",
-        "laravel-enso/users": "^2.8"
+        "laravel-enso/track-who": "^2.0",
+        "laravel-enso/tables": "^4.0"
     },
     "autoload": {
         "psr-4": {
