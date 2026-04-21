@@ -99,7 +99,7 @@ class PersonTest extends TestCase
         $this->post(route('administration.people.store', [], false), [
             ...$this->testModel->toArray(),
             'companies' => [$company->id],
-            'company' => $otherCompany->id,
+            'company'   => $otherCompany->id,
         ])->assertStatus(302)
             ->assertSessionHasErrors(['company']);
     }
@@ -113,7 +113,7 @@ class PersonTest extends TestCase
         $this->post(route('administration.people.store', [], false), [
             ...$this->testModel->toArray(),
             'companies' => [$firstCompany->id, $secondCompany->id],
-            'company' => $secondCompany->id,
+            'company'   => $secondCompany->id,
         ])->assertStatus(200);
 
         $person = Person::whereEmail($this->testModel->email)->firstOrFail();
@@ -131,12 +131,12 @@ class PersonTest extends TestCase
 
         User::factory()->create([
             'person_id' => $person->id,
-            'email' => $person->email,
+            'email'     => $person->email,
         ]);
 
         $this->patch(route('administration.people.update', $person->id, false), [
             ...$person->toArray(),
-            'email' => 'changed@example.com',
+            'email'     => 'changed@example.com',
             'companies' => [],
         ])->assertStatus(403);
     }
